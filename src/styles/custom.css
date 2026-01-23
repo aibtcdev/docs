@@ -42,3 +42,14 @@ a:hover {
 .site-title {
 	font-weight: 700;
 }
+
+/* Hero button styling - dark text on orange buttons */
+.hero a.primary {
+	background-color: var(--sl-color-accent);
+	color: var(--sl-color-black);
+}
+
+.hero a.primary:hover {
+	background-color: var(--sl-color-accent-high);
+	color: var(--sl-color-black);
+}
