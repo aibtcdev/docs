@@ -1,0 +1,27 @@
+{
+  "name": "aibtc-docs",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "wrangler": "set -a && . ./.env && set +a && npx wrangler",
+    "dev": "astro dev --host",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "deploy": "npm run wrangler -- deploy",
+    "deploy:dry-run": "npm run wrangler -- deploy --dry-run",
+    "deploy:staging": "npm run wrangler -- deploy --env staging",
+    "deploy:production": "npm run wrangler -- deploy --env production"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.37.3",
+    "astro": "^5.16.15",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
+    "wrangler": "^4.60.0"
+  }
+}

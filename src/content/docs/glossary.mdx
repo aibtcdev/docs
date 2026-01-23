@@ -1,0 +1,131 @@
+---
+title: Glossary
+description: Key terms and concepts used across the AIBTC ecosystem.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+A comprehensive glossary of terms used across the AIBTC ecosystem, organized by category.
+
+## Standards & Specifications
+
+| Term | Definition |
+|------|------------|
+| **SIP** | Stacks Improvement Proposal. The formal process for proposing changes to the Stacks protocol. |
+| **ERC-8004** | Ethereum standard for agent payments, enabling AI agents to pay for API access. AIBTC is implementing this on Stacks. |
+| **CAIP** | Chain Agnostic Improvement Proposal. Standards for cross-chain interoperability from the <a href="https://chainagnostic.org/" target="_blank" rel="noopener noreferrer">Chain Agnostic Standards Alliance</a>. |
+| **CAIP-2** | Standard for blockchain network identifiers. Example: `stacks:1` (mainnet), `stacks:2147483648` (testnet). |
+| **CAIP-19** | Standard for asset identifiers across blockchains. Enables universal token addressing. |
+| **MCP** | Model Context Protocol. Anthropic's protocol for AI models to interact with external tools and data sources. |
+| **MCP Server** | Server implementing MCP that exposes tools and resources to AI agents like Claude. |
+
+## Protocol & Payment
+
+| Term | Definition |
+|------|------------|
+| **x402** | Payment protocol enabling pay-per-use APIs via HTTP 402 status codes. Agents pay per request using blockchain tokens. See the <a href="https://www.x402.org/" target="_blank" rel="noopener noreferrer">x402 specification</a>. |
+| **HTTP 402** | "Payment Required" status code. The x402 protocol returns this when payment is needed to access an endpoint. |
+| **Facilitator** | Service that verifies and settles x402 payments. Confirms transaction validity before granting API access. |
+| **Settlement** | The process of verifying a payment transaction on-chain and confirming it with the facilitator. |
+| **Payer** | The entity (usually an AI agent) making payments to access x402-protected APIs. |
+| **Payment-Signature** | HTTP header containing the signed payment transaction for x402 requests. |
+| **Sponsored Transaction** | A transaction where a third party (sponsor) pays the network fees on behalf of the sender. |
+| **Gasless** | Transactions that don't require the sender to hold native tokens for fees (fees paid by sponsor). |
+| **Price Estimate** | Pre-calculated cost for an API request, returned in 402 responses to help payers prepare payment. |
+| **Pricing Tier** | Classification of endpoint costs: `free` (0), `standard` (0.001 STX), or `dynamic` (varies by usage). |
+
+## Blockchain & Tokens
+
+| Term | Definition |
+|------|------------|
+| **Stacks** | Layer 2 blockchain that brings smart contracts to Bitcoin. Uses Proof of Transfer (PoX) consensus. |
+| **STX** | Native token of the Stacks blockchain. Used for transaction fees and smart contract execution. |
+| **sBTC** | Synthetic Bitcoin on Stacks. 1:1 backed by BTC, enabling Bitcoin in smart contracts. |
+| **USDCx** | Bridged USDC stablecoin on Stacks. Pegged 1:1 to USD. |
+| **Clarity** | Smart contract language for Stacks. Decidable, non-Turing complete, with predictable execution. |
+| **SIP-018** | Stacks Improvement Proposal for signed structured data. Enables meta-transactions and off-chain signatures. |
+| **BNS** | Bitcoin Name System. Decentralized naming on Stacks (e.g., `name.btc`). |
+| **Nonce** | Transaction sequence number preventing replay attacks. Increments with each transaction from an address. |
+| **Mainnet** | Production Stacks network. Uses real STX, connects to Bitcoin mainnet. |
+| **Testnet** | Development Stacks network. Uses test STX, safe for experimentation. |
+
+## Tokens & Contracts
+
+| Term | Definition |
+|------|------------|
+| **Token Type** | Payment method identifier: `stx`, `sbtc`, or `usdcx`. |
+| **Token Contract** | Smart contract address for fungible tokens (sBTC, USDCx). STX is native, no contract needed. |
+
+## Infrastructure & Cloudflare
+
+| Term | Definition |
+|------|------------|
+| **Cloudflare Workers** | Serverless compute platform running at the edge. V8 isolate-based, near-zero cold starts. |
+| **Durable Objects** | Cloudflare's stateful compute primitive. Single-threaded, globally unique, with SQLite storage. |
+| **KV Namespace** | Cloudflare's key-value store. Eventually consistent, optimized for reads. |
+| **Service Binding** | Worker-to-worker RPC connection. Enables direct function calls between Workers. |
+| **Wrangler** | Cloudflare's CLI tool for developing and deploying Workers. |
+| **Binding** | Configuration connecting a Worker to resources (KV, Durable Objects, services, secrets). |
+
+## Frameworks & Libraries
+
+| Term | Definition |
+|------|------------|
+| **Hono** | Lightweight web framework for Cloudflare Workers. Fast routing, middleware support. |
+| **Chanfana** | OpenAPI framework for Cloudflare Workers. Auto-generates API documentation. |
+| **Astro** | Static site generator with partial hydration. Powers the docs site. |
+| **Starlight** | Astro's documentation theme. Built-in search, navigation, and dark mode. |
+
+## API Services
+
+| Term | Definition |
+|------|------------|
+| **Hiro API** | Blockchain data API for Stacks. Provides transaction, address, and contract data. |
+| **OpenRouter** | LLM aggregation service. Unified API for multiple AI models with usage-based pricing. |
+| **Tenero API** | Market data service for Stacks ecosystem. Token prices, trading analytics, wallet data. |
+
+## Storage Categories (x402-api)
+
+| Term | Definition |
+|------|------------|
+| **KV** | Simple key-value storage. Set, get, list, delete operations per payer. |
+| **Paste** | Text snippet storage with optional expiration. Like pastebin for agents. |
+| **DB** | SQLite-backed structured storage. Query with SQL, per-payer isolation. |
+| **Queue** | FIFO message queue. Push, pop, peek operations for async workflows. |
+| **Sync** | Real-time synchronization. Pub/sub pattern for coordinating agents. |
+| **Memory** | Vector storage with embeddings. Semantic search and retrieval. |
+
+## Endpoint Categories (x402-api)
+
+| Term | Definition |
+|------|------------|
+| **Inference** | LLM endpoints. Chat completions via OpenRouter or Cloudflare AI. |
+| **Stacks** | Blockchain utility endpoints. Address info, transaction decoding, BNS lookups. |
+| **Hashing** | Cryptographic hash endpoints. SHA256, Keccak256, Hash160, etc. Clarity-compatible. |
+| **Storage** | Stateful data endpoints. KV, Paste, DB, Queue, Sync, Memory. |
+
+## Team & Operations
+
+| Term | Definition |
+|------|------------|
+| **Claude Code** | Anthropic's CLI for Claude. Used by the team for development and automation. |
+| **claude-rpg** | Team management system. Assigns VMs to teammates, tracks Claude usage. |
+| **Worker-Logs** | Centralized logging service. Aggregates logs from all Cloudflare Workers. |
+| **Release Please** | Automated versioning tool. Creates releases from conventional commits. |
+
+## Environments
+
+| Term | Definition |
+|------|------------|
+| **aibtc.com** | Production domain. Mainnet services, real tokens. |
+| **aibtc.dev** | Staging domain. Testnet services, test tokens. |
+| **Dry-run** | Deployment verification without actually deploying. Catches errors before production. |
+
+## Testing
+
+| Term | Definition |
+|------|------------|
+| **E2E Test** | End-to-end test executing full payment flow against live endpoints. |
+| **Lifecycle Test** | Test covering full CRUD cycle: create, read, update, delete, verify. |
+| **Stateless Endpoint** | Endpoint with no side effects. Same input always produces same output. |
+| **Stateful Endpoint** | Endpoint that reads/writes persistent data. Requires lifecycle testing. |

@@ -1,0 +1,41 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Project metadata
+  "name": "aibtc-docs",
+  "compatibility_date": "2025-01-01",
+
+  // Static assets - Astro builds to ./dist
+  "assets": {
+    "directory": "./dist"
+  },
+
+  // Disable workers.dev subdomain (we use custom domains)
+  "workers_dev": false,
+
+  // Development bindings (used with `wrangler dev`)
+  // None needed for static docs site
+
+  // Environment-specific configuration
+  // Note: Bindings are NOT inherited - must be defined per environment
+  "env": {
+    // Staging environment - docs.aibtc.dev
+    "staging": {
+      "routes": [
+        {
+          "pattern": "docs.aibtc.dev/*",
+          "zone_name": "aibtc.dev"
+        }
+      ]
+    },
+
+    // Production environment - docs.aibtc.com
+    "production": {
+      "routes": [
+        {
+          "pattern": "docs.aibtc.com/*",
+          "zone_name": "aibtc.com"
+        }
+      ]
+    }
+  }
+}
