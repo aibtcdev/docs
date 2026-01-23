@@ -1,49 +1,65 @@
-# Starlight Starter Kit: Basics
+# AIBTC Docs
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+Documentation site for the AIBTC ecosystem, built with [Astro Starlight](https://starlight.astro.build/) and deployed to Cloudflare Workers.
+
+- **Production**: https://docs.aibtc.com
+- **Staging**: https://docs.aibtc.dev
+- **Repository**: https://github.com/aibtcdev/docs
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start dev server (accessible on LAN)
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview build locally
+npm run preview
+
+# Type check
+npm run check
+```
+
+## Deployment
+
+Commits to `main` trigger automatic deployment via CI/CD. For manual deployment:
+
+```bash
+# Verify build (always do this first)
+npm run deploy:dry-run
+
+# Deploy to staging
+npm run deploy:staging
+
+# Deploy to production
+npm run deploy:production
+```
+
+## Project Structure
 
 ```
-npm create astro@latest -- --template starlight
+src/content/docs/    # Documentation content (MDX/MD files)
+src/assets/          # Images and other assets
+public/              # Static files (favicon, etc.)
+astro.config.mjs     # Astro + Starlight configuration
+wrangler.jsonc       # Cloudflare Workers configuration
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Adding Content
 
-## 🚀 Project Structure
+1. Create `.md` or `.mdx` files in `src/content/docs/`
+2. Update sidebar in `astro.config.mjs` if needed (or use autogenerate)
+3. Run `npm run dev` to preview
+4. Commit and push to deploy
 
-Inside of your Astro + Starlight project, you'll see the following folders and files:
+## Related Repositories
 
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
-```
-
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
-
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
-
-Static assets, like favicons, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+- [aibtcdev/x402-api](https://github.com/aibtcdev/x402-api) - Pay-per-use API endpoints
+- [aibtcdev/aibtc-mcp-server](https://github.com/aibtcdev/aibtc-mcp-server) - MCP server for AI agents
+- [aibtcdev/erc-8004-stacks](https://github.com/aibtcdev/erc-8004-stacks) - ERC-8004 reference implementation
+- [aibtcdev/sips](https://github.com/aibtcdev/sips) - Stacks Improvement Proposals

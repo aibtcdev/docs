@@ -60,5 +60,5 @@ wrangler.jsonc       # Cloudflare Workers configuration
 ## Configuration
 
 - **Site title**: AIBTC Docs (in astro.config.mjs)
-- **Base path**: /docs (all pages served under this path)
+- **Site URL**: https://docs.aibtc.com (pages at root, e.g., /glossary/)
 - **Social links**: GitHub, X (@aibtcdev)
