@@ -1,0 +1,44 @@
+/* AIBTC Color Palette */
+:root {
+	--sl-color-accent-low: #1a0f00;
+	--sl-color-accent: #f7931a;
+	--sl-color-accent-high: #ffc266;
+	--sl-color-white: #ffffff;
+	--sl-color-gray-1: #eeeeee;
+	--sl-color-gray-2: #c2c2c2;
+	--sl-color-gray-3: #8b8b8b;
+	--sl-color-gray-4: #585858;
+	--sl-color-gray-5: #383838;
+	--sl-color-gray-6: #1a1a1a;
+	--sl-color-black: #000000;
+}
+
+/* Dark mode (default) */
+:root[data-theme='dark'] {
+	--sl-color-bg: #000000;
+	--sl-color-bg-nav: #0a0a0a;
+	--sl-color-bg-sidebar: #0a0a0a;
+	--sl-color-hairline-light: #1a1a1a;
+	--sl-color-hairline: #2a2a2a;
+}
+
+/* Light mode */
+:root[data-theme='light'] {
+	--sl-color-bg: #ffffff;
+	--sl-color-bg-nav: #f5f5f5;
+	--sl-color-bg-sidebar: #f5f5f5;
+}
+
+/* Link styling */
+a {
+	color: var(--sl-color-accent);
+}
+
+a:hover {
+	color: var(--sl-color-accent-high);
+}
+
+/* Site title styling */
+.site-title {
+	font-weight: 700;
+}

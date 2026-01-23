@@ -11,6 +11,12 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'AIBTC Docs',
+			logo: {
+				light: './src/assets/aibtc-avatar.png',
+				dark: './src/assets/aibtc-avatar.png',
+			},
+			favicon: '/favicon.png',
+			customCss: ['./src/styles/custom.css'],
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/aibtcdev' },
 				{ icon: 'x.com', label: 'X', href: 'https://x.com/aibtcdev' },
