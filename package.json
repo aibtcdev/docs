@@ -1,7 +1,7 @@
 {
   "name": "aibtc-docs",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "wrangler": "set -a && . ./.env && set +a && npx wrangler",
     "dev": "astro dev --host",
