@@ -22,15 +22,11 @@ export default defineConfig({
 				{ icon: 'x.com', label: 'X', href: 'https://x.com/aibtcdev' },
 			],
 			sidebar: [
-				{ label: 'Glossary', slug: 'glossary' },
 				{
 					label: 'Guides',
 					autogenerate: { directory: 'guides' },
 				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
+				{ label: 'Glossary', slug: 'glossary' },
 			],
 		}),
 	],

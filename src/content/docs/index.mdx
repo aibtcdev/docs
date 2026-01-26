@@ -3,70 +3,42 @@ title: AIBTC Documentation
 description: Documentation for the AIBTC ecosystem - pay-per-use APIs for AI agents.
 template: splash
 hero:
-  tagline: Pay-per-use APIs for AI agents on the Stacks blockchain.
+  tagline: Pay-per-use APIs for AI agents, powered by Bitcoin.
   actions:
-    - text: Glossary
-      link: /glossary/
-      icon: open-book
+    - text: Get Started
+      link: /guides/what-is-x402/
+      icon: right-arrow
     - text: GitHub
       link: https://github.com/aibtcdev
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-## Core Services
+AIBTC builds tools that let AI agents pay for the APIs they use, one request at a time. No subscriptions, no API keys, no invoices — just blockchain-verified micropayments.
+
+## What's in the ecosystem
 
 <CardGrid>
 	<Card title="x402 API" icon="rocket">
-		Pay-per-use API endpoints for inference, blockchain utilities, hashing, and storage. Agents pay with STX, sBTC, or USDCx.
+		Pay-per-use endpoints for AI inference, blockchain data, hashing, and storage. Agents pay with STX, sBTC, or USDCx per request.
 	</Card>
 	<Card title="Sponsor Relay" icon="forward-slash">
-		Gasless transactions for AI agents. Sponsors cover network fees so agents can operate without holding STX for gas.
+		Gasless transactions for AI agents. A sponsor covers network fees so agents can operate without holding STX for gas.
 	</Card>
-	<Card title="Worker Logs" icon="list-format">
-		Centralized logging service for all Cloudflare Workers. Search, filter, and monitor across the ecosystem.
+	<Card title="StacksScan Explorer" icon="list-format">
+		Ecosystem explorer for x402 activity, service stats, and network health across the AIBTC infrastructure.
 	</Card>
-	<Card title="Cross-Chain" icon="random">
-		x402 protocol support across Stacks, EVM, and Solana. Unified payment headers for multi-chain agents.
+	<Card title="Supported Tokens" icon="random">
+		Pay with STX, sBTC, or USDCx. Each token fits a different use case — from general purpose to dollar-stable pricing.
 	</Card>
 </CardGrid>
 
 ## Quick Links
 
 <CardGrid>
-	<Card title="Glossary" icon="open-book">
-		[Key terms and concepts](/glossary/) used across the AIBTC ecosystem.
-	</Card>
-	<Card title="GitHub" icon="github">
-		<a href="https://github.com/aibtcdev" target="_blank" rel="noopener noreferrer">View source code</a> for all AIBTC projects.
-	</Card>
+	<LinkCard title="What is x402?" href="/guides/what-is-x402/" description="Learn how agents pay for APIs with blockchain micropayments." />
+	<LinkCard title="Services & Tools" href="/guides/services/" description="Explore the APIs, relays, and dashboards in the ecosystem." />
+	<LinkCard title="Supported Tokens" href="/guides/tokens/" description="Compare STX, sBTC, and USDCx and find out where to get them." />
 </CardGrid>
-
-## Repositories
-
-<CardGrid>
-	<Card title="x402-api" icon="rocket">
-		<a href="https://github.com/aibtcdev/x402-api" target="_blank" rel="noopener noreferrer">aibtcdev/x402-api</a> — Pay-per-use API endpoints powered by x402 protocol.
-	</Card>
-	<Card title="aibtc-mcp-server" icon="puzzle">
-		<a href="https://github.com/aibtcdev/aibtc-mcp-server" target="_blank" rel="noopener noreferrer">aibtcdev/aibtc-mcp-server</a> — MCP server for AI agent access to AIBTC services.
-	</Card>
-	<Card title="erc-8004-stacks" icon="document">
-		<a href="https://github.com/aibtcdev/erc-8004-stacks" target="_blank" rel="noopener noreferrer">aibtcdev/erc-8004-stacks</a> — Reference implementation of ERC-8004 in Clarity.
-	</Card>
-	<Card title="sips" icon="open-book">
-		<a href="https://github.com/aibtcdev/sips" target="_blank" rel="noopener noreferrer">aibtcdev/sips</a> — Stacks Improvement Proposals for AIBTC standards.
-	</Card>
-</CardGrid>
-
-## Open Contributions
-
-Active pull requests and specifications in review:
-
-| Contribution | Repository | Status |
-|--------------|------------|--------|
-| <a href="https://github.com/coinbase/x402/pull/962" target="_blank" rel="noopener noreferrer">Stacks Chain Spec for x402</a> | coinbase/x402 | Pending Review |
-| <a href="https://github.com/ChainAgnostic/namespaces/pull/167" target="_blank" rel="noopener noreferrer">CAIP-19 Spec for Stacks</a> | ChainAgnostic/namespaces | Pending Review |
-| <a href="https://github.com/stacksgov/sips/pull/249" target="_blank" rel="noopener noreferrer">ERC-8004 SIP (Original)</a> | stacksgov/sips | Migration to aibtcdev/sips |
