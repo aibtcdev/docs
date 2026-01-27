@@ -1,13 +1,13 @@
-/* AIBTC Color Palette */
+/* AIBTC Color Palette — see aibtcdev/branding for official values */
 :root {
-	--sl-color-accent-low: #1a0f00;
-	--sl-color-accent: #f7931a;
-	--sl-color-accent-high: #ffc266;
+	--sl-color-accent-low: #1a0800;
+	--sl-color-accent: #FF4F03;
+	--sl-color-accent-high: #FF9B6B;
 	--sl-color-white: #ffffff;
 	--sl-color-gray-1: #eeeeee;
 	--sl-color-gray-2: #c2c2c2;
 	--sl-color-gray-3: #8b8b8b;
-	--sl-color-gray-4: #585858;
+	--sl-color-gray-4: #56595b;
 	--sl-color-gray-5: #383838;
 	--sl-color-gray-6: #1a1a1a;
 	--sl-color-black: #000000;
