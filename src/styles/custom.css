@@ -1,8 +1,50 @@
-/* AIBTC Color Palette — see aibtcdev/branding for official values */
+/* AIBTC Brand Styles — see aibtcdev/branding for official values */
+
+/* ----------------------------------------------------------------
+   Typography — Roc Grotesk
+   Font files are licensed (myfonts.com) and not distributed in the
+   branding repo. Place .woff2 files in src/fonts/ and uncomment.
+   ---------------------------------------------------------------- */
+/*
+@font-face {
+	font-family: 'Roc Grotesk';
+	src: url('../fonts/RocGrotesk-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Roc Grotesk Wide';
+	src: url('../fonts/RocGrotesk-WideMedium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Roc Grotesk ExtraWide';
+	src: url('../fonts/RocGrotesk-ExtraWideMedium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+*/
+
+/* ----------------------------------------------------------------
+   Color Palette
+   ---------------------------------------------------------------- */
 :root {
+	/* Accent (orange) */
 	--sl-color-accent-low: #1a0800;
 	--sl-color-accent: #FF4F03;
 	--sl-color-accent-high: #FF9B6B;
+
+	/* Brand secondary / tertiary */
+	--aibtc-blue: #0634D0;
+	--aibtc-purple: #A855F7;
+
+	/* Neutrals */
 	--sl-color-white: #ffffff;
 	--sl-color-gray-1: #eeeeee;
 	--sl-color-gray-2: #c2c2c2;
@@ -11,9 +53,16 @@
 	--sl-color-gray-5: #383838;
 	--sl-color-gray-6: #1a1a1a;
 	--sl-color-black: #000000;
+
+	/* Typography — uncomment when font files are available
+	--sl-font: 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	--sl-font-heading: 'Roc Grotesk Wide', 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	*/
 }
 
-/* Dark mode (default) */
+/* ----------------------------------------------------------------
+   Dark mode (forced — only mode)
+   ---------------------------------------------------------------- */
 :root[data-theme='dark'] {
 	--sl-color-bg: #000000;
 	--sl-color-bg-nav: #0a0a0a;
@@ -22,14 +71,9 @@
 	--sl-color-hairline: #2a2a2a;
 }
 
-/* Light mode */
-:root[data-theme='light'] {
-	--sl-color-bg: #ffffff;
-	--sl-color-bg-nav: #f5f5f5;
-	--sl-color-bg-sidebar: #f5f5f5;
-}
-
-/* Link styling */
+/* ----------------------------------------------------------------
+   Links
+   ---------------------------------------------------------------- */
 a {
 	color: var(--sl-color-accent);
 }
@@ -38,12 +82,24 @@ a:hover {
 	color: var(--sl-color-accent-high);
 }
 
-/* Site title styling */
+/* ----------------------------------------------------------------
+   Focus ring — AIBTC orange
+   ---------------------------------------------------------------- */
+:focus-visible {
+	outline: 2px solid var(--sl-color-accent);
+	outline-offset: 2px;
+}
+
+/* ----------------------------------------------------------------
+   Site title
+   ---------------------------------------------------------------- */
 .site-title {
 	font-weight: 700;
 }
 
-/* Hero button styling - dark text on orange buttons */
+/* ----------------------------------------------------------------
+   Hero buttons — dark text on orange
+   ---------------------------------------------------------------- */
 .hero a.primary {
 	background-color: var(--sl-color-accent);
 	color: var(--sl-color-black);
@@ -52,4 +108,25 @@ a:hover {
 .hero a.primary:hover {
 	background-color: var(--sl-color-accent-high);
 	color: var(--sl-color-black);
+}
+
+/* ----------------------------------------------------------------
+   Background pattern overlay
+   Uses the brand pattern at very low opacity so content remains
+   readable. Applied only to the main content area.
+   ---------------------------------------------------------------- */
+.main-pane {
+	position: relative;
+}
+
+.main-pane::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url('../assets/aibtcdev-pattern-3-640px.png');
+	background-repeat: repeat;
+	background-size: 640px;
+	opacity: 0.03;
+	pointer-events: none;
+	z-index: 0;
 }
