@@ -1,35 +1,31 @@
 /* AIBTC Brand Styles — see aibtcdev/branding for official values */
 
 /* ----------------------------------------------------------------
-   Typography — Roc Grotesk
-   Font files are licensed (myfonts.com) and not distributed in the
-   branding repo. Place .woff2 files in src/fonts/ and uncomment.
+   Typography — Roc Grotesk (served from aibtc.com CDN)
    ---------------------------------------------------------------- */
-/*
 @font-face {
 	font-family: 'Roc Grotesk';
-	src: url('../fonts/RocGrotesk-Regular.woff2') format('woff2');
+	src: url('https://aibtc.com/fonts/RocGrotesk-Regular.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: 'Roc Grotesk Wide';
-	src: url('../fonts/RocGrotesk-WideMedium.woff2') format('woff2');
+	font-family: 'Roc Grotesk';
+	src: url('https://aibtc.com/fonts/RocGrotesk-WideMedium.woff2') format('woff2');
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: 'Roc Grotesk ExtraWide';
-	src: url('../fonts/RocGrotesk-ExtraWideMedium.woff2') format('woff2');
+	font-family: 'Roc Grotesk Wide';
+	src: url('https://aibtc.com/fonts/RocGrotesk-ExtraWideMedium.woff2') format('woff2');
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
 }
-*/
 
 /* ----------------------------------------------------------------
    Color Palette
@@ -54,10 +50,9 @@
 	--sl-color-gray-6: #1a1a1a;
 	--sl-color-black: #000000;
 
-	/* Typography — uncomment when font files are available
+	/* Typography */
 	--sl-font: 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	--sl-font-heading: 'Roc Grotesk Wide', 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	*/
 }
 
 /* ----------------------------------------------------------------
