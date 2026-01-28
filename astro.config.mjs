@@ -27,10 +27,8 @@ export default defineConfig({
 			],
 			sidebar: [
 				{ label: 'Directory', slug: 'directory' },
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
+				{ label: 'Tokens', slug: 'reference/tokens' },
+				{ label: 'Networks', slug: 'reference/networks' },
 				{ label: 'Glossary', slug: 'glossary' },
 			],
 		}),
