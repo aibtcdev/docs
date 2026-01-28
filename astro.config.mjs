@@ -26,9 +26,10 @@ export default defineConfig({
 				{ icon: 'x.com', label: 'X', href: 'https://x.com/aibtcdev' },
 			],
 			sidebar: [
+				{ label: 'Directory', slug: 'directory' },
 				{
-					label: 'Guides',
-					autogenerate: { directory: 'guides' },
+					label: 'Reference',
+					autogenerate: { directory: 'reference' },
 				},
 				{ label: 'Glossary', slug: 'glossary' },
 			],
