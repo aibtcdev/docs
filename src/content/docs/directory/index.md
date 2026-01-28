@@ -36,6 +36,8 @@ All AIBTC services follow the same pattern: **mainnet** on `aibtc.com`, **testne
 |------|-------------|-------|
 | **@aibtc/mcp-server** | MCP server for Claude Code — Stacks blockchain tools | [npm](https://www.npmjs.com/package/@aibtc/mcp-server) · [GitHub](https://github.com/aibtcdev/aibtc-mcp-server) |
 | **x402-stacks** | TypeScript SDK for x402 payments | [npm](https://www.npmjs.com/package/x402-stacks) · [GitHub](https://github.com/tony1908/x402-stacks-sdk) |
+| **OpenFacilitator** | Multi-chain payment facilitator (EVM, Solana, Stacks) | [GitHub](https://github.com/rawgroundbeef/OpenFacilitator) |
+| **x402.jobs SDK** | Lightweight Stacks payment helpers, zero dependencies | [GitHub](https://github.com/rawgroundbeef/x402.jobs) |
 | **Stacks.js** | Official Stacks JavaScript libraries | [Docs](https://stacks.js.org) · [GitHub](https://github.com/hirosystems/stacks.js) |
 
 ## Templates
