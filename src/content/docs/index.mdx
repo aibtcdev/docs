@@ -1,44 +1,45 @@
 ---
-title: AIBTC Documentation
-description: Documentation for the AIBTC ecosystem - pay-per-use APIs for AI agents.
+title: AIBTC Docs
+description: Reference documentation for the AIBTC x402 ecosystem.
 template: splash
 hero:
-  tagline: Pay-per-use APIs for AI agents, powered by Bitcoin.
+  tagline: Reference docs for the x402 ecosystem on Stacks.
   actions:
-    - text: Get Started
-      link: /guides/what-is-x402/
+    - text: Directory
+      link: /directory/
       icon: right-arrow
-    - text: GitHub
-      link: https://github.com/aibtcdev
+    - text: Start Building
+      link: https://aibtc.com
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
-
-AIBTC builds tools that let AI agents pay for the APIs they use, one request at a time. No subscriptions, no API keys, no invoices — just blockchain-verified micropayments.
-
-## What's in the ecosystem
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
 <CardGrid>
-	<Card title="x402 API" icon="rocket">
-		Pay-per-use endpoints for AI inference, blockchain data, hashing, and storage. Agents pay with STX, sBTC, or USDCx per request.
-	</Card>
-	<Card title="Sponsor Relay" icon="forward-slash">
-		Gasless transactions for AI agents. A sponsor covers network fees so agents can operate without holding STX for gas.
-	</Card>
-	<Card title="StacksScan Explorer" icon="list-format">
-		Ecosystem explorer for x402 activity, service stats, and network health across the AIBTC infrastructure.
-	</Card>
-	<Card title="Supported Tokens" icon="random">
-		Pay with STX, sBTC, or USDCx. Each token fits a different use case — from general purpose to dollar-stable pricing.
-	</Card>
+	<LinkCard title="Directory" href="/directory/" description="Services, tools, SDKs, and templates." />
+	<LinkCard title="Tokens" href="/reference/tokens/" description="Contract addresses and identifiers." />
+	<LinkCard title="Networks" href="/reference/networks/" description="Endpoints and configurations." />
+	<LinkCard title="Glossary" href="/glossary/" description="Term definitions." />
 </CardGrid>
 
-## Quick Links
+## Quick Reference
 
-<CardGrid>
-	<LinkCard title="What is x402?" href="/guides/what-is-x402/" description="Learn how agents pay for APIs with blockchain micropayments." />
-	<LinkCard title="Services & Tools" href="/guides/services/" description="Explore the APIs, relays, and dashboards in the ecosystem." />
-	<LinkCard title="Supported Tokens" href="/guides/tokens/" description="Compare STX, sBTC, and USDCx and find out where to get them." />
-</CardGrid>
+### Tokens
+
+| Token | Mainnet Contract | Testnet Contract |
+|-------|------------------|------------------|
+| **STX** | Native | Native |
+| **sBTC** | `SM3VDXK3WZZSA84...sbtc-token` | `ST1F7QA2MDF17S8...sbtc-token` |
+| **USDCx** | `SP120SBRBQJ00MC...usdcx` | — |
+
+### Endpoints
+
+| Service | Mainnet | Testnet |
+|---------|---------|---------|
+| **x402 API** | [x402.aibtc.com](https://x402.aibtc.com) | [x402.aibtc.dev](https://x402.aibtc.dev) |
+| **Sponsor Relay** | [x402-relay.aibtc.com](https://x402-relay.aibtc.com) | [x402-relay.aibtc.dev](https://x402-relay.aibtc.dev) |
+
+## Community
+
+- [Weekly Calls](https://www.addevent.com/event/UM20108233) · [Discord](https://discord.gg/5DJaBrf) · [GitHub](https://github.com/aibtcdev) · [X](https://x.com/aibtcdev)
