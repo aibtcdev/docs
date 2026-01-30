@@ -79,11 +79,23 @@
    Dark mode (forced — only mode)
    ---------------------------------------------------------------- */
 :root[data-theme='dark'] {
+	/* Backgrounds */
 	--sl-color-bg: #000000;
 	--sl-color-bg-nav: #0a0a0a;
 	--sl-color-bg-sidebar: #0a0a0a;
-	--sl-color-hairline-light: #1a1a1a;
-	--sl-color-hairline: #2a2a2a;
+	--sl-color-bg-inline-code: #161618;
+
+	/* Hairlines — layered for visual hierarchy */
+	--sl-color-hairline-light: #1a1a1c;
+	--sl-color-hairline: #252528;
+	--sl-color-hairline-shade: #0a0a0a;
+
+	/* Extended border tokens for different contexts */
+	--aibtc-border-subtle: #1e1e22;
+	--aibtc-border-default: #2a2a2e;
+	--aibtc-border-strong: #3a3a40;
+	--aibtc-border-accent: rgba(255, 79, 3, 0.25);
+	--aibtc-border-accent-strong: rgba(255, 79, 3, 0.5);
 }
 
 /* ----------------------------------------------------------------
