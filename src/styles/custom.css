@@ -129,10 +129,77 @@ a:hover {
 }
 
 /* ----------------------------------------------------------------
+   Typography Hierarchy — Heading Styles
+   ---------------------------------------------------------------- */
+
+/* Major headings (h1, h2) — ExtraWide for futuristic, bold appearance */
+.sl-markdown-content h1:not(:where(.not-content *)) {
+	font-family: var(--aibtc-font-extrawide);
+	font-size: clamp(2rem, 5vw, 2.625rem);
+	font-weight: 500;
+	letter-spacing: -0.02em;
+	line-height: 1.15;
+}
+
+.sl-markdown-content h2:not(:where(.not-content *)) {
+	font-family: var(--aibtc-font-extrawide);
+	font-size: clamp(1.5rem, 4vw, 2rem);
+	font-weight: 500;
+	letter-spacing: -0.015em;
+	line-height: 1.2;
+}
+
+/* Mid-level headings (h3, h4) — Wide for distinction */
+.sl-markdown-content h3:not(:where(.not-content *)) {
+	font-family: var(--aibtc-font-wide);
+	font-size: clamp(1.25rem, 3vw, 1.5rem);
+	font-weight: 500;
+	letter-spacing: -0.01em;
+	line-height: 1.25;
+}
+
+.sl-markdown-content h4:not(:where(.not-content *)) {
+	font-family: var(--aibtc-font-wide);
+	font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+	font-weight: 500;
+	letter-spacing: -0.005em;
+	line-height: 1.3;
+}
+
+/* Small headings (h5, h6) — Regular for readability */
+.sl-markdown-content h5:not(:where(.not-content *)) {
+	font-family: var(--sl-font);
+	font-size: 1.125rem;
+	font-weight: 500;
+	letter-spacing: 0;
+	line-height: 1.4;
+}
+
+.sl-markdown-content h6:not(:where(.not-content *)) {
+	font-family: var(--sl-font);
+	font-size: 1rem;
+	font-weight: 500;
+	letter-spacing: 0;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+
+/* Page title in hero section */
+.hero h1 {
+	font-family: var(--aibtc-font-extrawide);
+	font-size: clamp(2.5rem, 7vw, 3.5rem);
+	font-weight: 500;
+	letter-spacing: -0.025em;
+	line-height: 1.1;
+}
+
+/* ----------------------------------------------------------------
    Site title
    ---------------------------------------------------------------- */
 .site-title {
-	font-weight: 700;
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	letter-spacing: -0.01em;
 }
 
 /* ----------------------------------------------------------------
