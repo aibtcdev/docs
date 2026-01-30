@@ -977,3 +977,131 @@ site-search dialog::backdrop {
 	color: var(--sl-color-gray-3);
 	font-size: 0.875rem;
 }
+
+/* ----------------------------------------------------------------
+   Sidebar and Navigation — subtle background treatments
+   ---------------------------------------------------------------- */
+
+/* Sidebar panel */
+.sidebar-pane {
+	background: linear-gradient(
+		180deg,
+		rgba(10, 10, 10, 0.95) 0%,
+		rgba(0, 0, 0, 0.98) 100%
+	);
+	border-right: 1px solid var(--aibtc-border-subtle);
+}
+
+/* Sidebar content area */
+nav.sidebar-content {
+	background: transparent;
+}
+
+/* Sidebar group styling */
+.sidebar-group {
+	margin-bottom: 0.5rem;
+}
+
+/* Sidebar section headers with subtle accent */
+.sidebar-group > details > summary,
+.sidebar-group > .large {
+	position: relative;
+}
+
+.sidebar-group > details > summary::before,
+.sidebar-group > .large::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 2px;
+	height: 1rem;
+	background-color: var(--sl-color-accent);
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+
+.sidebar-group > details[open] > summary::before {
+	opacity: 0.5;
+}
+
+/* Top navigation bar */
+header.header {
+	background: linear-gradient(
+		180deg,
+		rgba(10, 10, 10, 0.98) 0%,
+		rgba(10, 10, 10, 0.95) 100%
+	);
+	border-bottom: 1px solid var(--aibtc-border-subtle);
+	backdrop-filter: blur(8px);
+}
+
+/* Mobile menu panel */
+starlight-menu-button + nav {
+	background: linear-gradient(
+		135deg,
+		rgba(10, 10, 10, 0.98) 0%,
+		rgba(0, 0, 0, 0.99) 100%
+	);
+}
+
+/* Breadcrumbs area (if present) */
+.breadcrumbs {
+	padding: 0.5rem 0;
+	border-bottom: 1px solid var(--aibtc-border-subtle);
+	margin-bottom: 1rem;
+}
+
+/* Table of contents panel */
+.right-sidebar {
+	background: transparent;
+}
+
+.right-sidebar-panel {
+	background: linear-gradient(
+		180deg,
+		transparent 0%,
+		rgba(255, 79, 3, 0.01) 100%
+	);
+	border-left: 1px solid var(--aibtc-border-subtle);
+	padding-left: 1rem;
+}
+
+/* Table of contents heading */
+starlight-toc h2 {
+	font-family: var(--aibtc-font-wide);
+	font-size: 0.75rem;
+	font-weight: 500;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-3);
+	margin-bottom: 0.75rem;
+}
+
+/* Main content area subtle separation */
+.main-frame {
+	position: relative;
+}
+
+/* Content wrapper */
+.content-panel {
+	background: transparent;
+}
+
+/* Footer styling */
+footer.footer {
+	border-top: 1px solid var(--aibtc-border-subtle);
+	background: linear-gradient(
+		180deg,
+		rgba(0, 0, 0, 0.5) 0%,
+		rgba(10, 10, 10, 0.8) 100%
+	);
+}
+
+/* Mobile navigation bottom bar */
+.mobile-preferences {
+	background: rgba(10, 10, 10, 0.98);
+	border-top: 1px solid var(--aibtc-border-subtle);
+	backdrop-filter: blur(8px);
+}
