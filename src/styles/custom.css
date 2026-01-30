@@ -188,11 +188,35 @@ starlight-toc a[aria-current="true"] {
 }
 
 /* ----------------------------------------------------------------
-   Focus ring — AIBTC orange
+   Focus ring — AIBTC orange with glow effects
    ---------------------------------------------------------------- */
 :focus-visible {
 	outline: 2px solid var(--sl-color-accent);
 	outline-offset: 2px;
+	box-shadow: 0 0 0 4px var(--aibtc-orange-glow);
+}
+
+/* Prevent double glow on elements with custom focus styling */
+.sl-link-button:focus-visible,
+site-search button:focus-visible,
+.pagination-links a:focus-visible,
+.sl-link-card:focus-visible {
+	box-shadow: 0 0 20px var(--aibtc-orange-glow);
+}
+
+/* Input elements — enhanced focus */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+	outline: 2px solid var(--sl-color-accent);
+	outline-offset: 0;
+	box-shadow: 0 0 0 4px var(--aibtc-orange-glow);
+}
+
+/* Checkbox and radio — smaller glow */
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+	box-shadow: 0 0 0 3px var(--aibtc-orange-glow);
 }
 
 /* ----------------------------------------------------------------
