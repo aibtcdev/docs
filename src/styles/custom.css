@@ -1,6 +1,22 @@
 /* AIBTC Brand Styles — see aibtcdev/branding for official values */
 
 /* ----------------------------------------------------------------
+   Global Font Rendering Optimizations
+   ---------------------------------------------------------------- */
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+/* Enhanced rendering for headings (more expensive but worth it) */
+h1, h2, h3, h4, h5, h6,
+.site-title,
+.hero h1 {
+	text-rendering: geometricPrecision;
+}
+
+/* ----------------------------------------------------------------
    Typography — Roc Grotesk (served from aibtc.com CDN)
 
    Font families:
