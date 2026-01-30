@@ -665,3 +665,56 @@ site-search dialog::backdrop {
 	color: var(--sl-color-accent-high);
 	font-weight: 600;
 }
+
+/* ----------------------------------------------------------------
+   Pagination — brand styling for prev/next navigation
+   ---------------------------------------------------------------- */
+
+.pagination-links a {
+	border-color: var(--aibtc-border-default);
+	background-color: rgba(0, 0, 0, 0.3);
+	transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.pagination-links a:hover {
+	border-color: var(--sl-color-accent);
+	background-color: rgba(255, 79, 3, 0.05);
+	box-shadow: 0 0 20px var(--aibtc-orange-glow);
+}
+
+/* Arrow icons */
+.pagination-links a svg {
+	color: var(--sl-color-gray-3);
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.pagination-links a:hover svg {
+	color: var(--sl-color-accent);
+}
+
+/* Subtle arrow animation on hover */
+.pagination-links a[rel="prev"]:hover svg {
+	transform: translateX(-3px);
+}
+
+.pagination-links a[rel="next"]:hover svg {
+	transform: translateX(3px);
+}
+
+/* Link title styling */
+.pagination-links a .link-title {
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	color: var(--sl-color-white);
+	transition: color 0.2s ease;
+}
+
+.pagination-links a:hover .link-title {
+	color: var(--sl-color-accent-high);
+}
+
+/* "Previous"/"Next" label */
+.pagination-links a > span:first-of-type {
+	color: var(--sl-color-gray-3);
+	font-size: 0.875rem;
+}
