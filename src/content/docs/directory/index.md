@@ -12,14 +12,20 @@ All AIBTC services follow the same pattern: **mainnet** on `aibtc.com`, **testne
 | **x402 API** | [x402.aibtc.com](https://x402.aibtc.com) | [x402.aibtc.dev](https://x402.aibtc.dev) | [GitHub](https://github.com/aibtcdev/x402-api) |
 | **Sponsor Relay** | [x402-relay.aibtc.com](https://x402-relay.aibtc.com) | [x402-relay.aibtc.dev](https://x402-relay.aibtc.dev) | [GitHub](https://github.com/aibtcdev/x402-sponsor-relay) |
 
-**x402 API endpoints:**
-- `/` — Health check
-- `/docs` — OpenAPI documentation
-- `/dashboard` — Usage stats and analytics
+### x402 API Endpoints
 
-**Sponsor Relay endpoints:**
-- `/` — Health check
-- `/docs` — OpenAPI documentation
+| Path | Description |
+|------|-------------|
+| `/` | Health check |
+| `/docs` | OpenAPI documentation |
+| `/dashboard` | Usage stats and analytics |
+
+### Sponsor Relay Endpoints
+
+| Path | Description |
+|------|-------------|
+| `/` | Health check |
+| `/docs` | OpenAPI documentation |
 
 ## Ecosystem Services
 

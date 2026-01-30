@@ -30,7 +30,7 @@ Asset identifier: `::sbtc-token`
 
 ### USDCx
 
-Bridged USDC via [Circle Xreserve](https://www.circle.com/xreserve) on Stacks.
+Bridged USDC on Stacks, backed 1:1 by USDC.
 
 | Network | Contract ID |
 |---------|-------------|
@@ -39,7 +39,7 @@ Bridged USDC via [Circle Xreserve](https://www.circle.com/xreserve) on Stacks.
 
 Asset identifier: `::usdcx-token`
 
-**Bridging:** See [Stacks bridging documentation](https://docs.stacks.co/guides/bridge-assets-to-stacks) for how to bridge USDC to Stacks.
+**Bridge:** Use supported bridges listed in the [Stacks bridging documentation](https://docs.stacks.co/guides/bridge-assets-to-stacks) to transfer USDC from Ethereum to Stacks. USDCx maintains 1:1 parity with USDC via [Circle Xreserve](https://www.circle.com/xreserve).
 
 ## CAIP-19 Asset Identifiers
 
