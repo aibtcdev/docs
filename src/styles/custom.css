@@ -1350,7 +1350,8 @@ a:has(.site-title):hover .site-title {
 .sl-markdown-content a[href^="http"]:not([href*="aibtc."]):not([href*="docs.aibtc"]):not(:where(.not-content *, .sl-link-button))::after {
 	content: ' \2197';
 	font-size: 0.75em;
-	opacity: 0.6;
+	color: var(--sl-color-gray-3);
+	opacity: 0.7;
 }
 
 /* Allow code in tables to wrap */
