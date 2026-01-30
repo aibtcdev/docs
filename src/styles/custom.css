@@ -571,3 +571,73 @@ starlight-toc a {
 		transparent 100%
 	);
 }
+
+/* ----------------------------------------------------------------
+   Search — brand styling for search button and modal
+   ---------------------------------------------------------------- */
+
+/* Search button (in header) */
+site-search button[data-open-modal] {
+	transition: border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+@media (min-width: 50rem) {
+	site-search button[data-open-modal] {
+		border-color: var(--aibtc-border-default);
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+
+	site-search button[data-open-modal]:hover {
+		border-color: var(--sl-color-accent);
+		box-shadow: 0 0 15px var(--aibtc-orange-glow);
+		color: var(--sl-color-white);
+	}
+}
+
+/* Keyboard shortcut styling */
+site-search button > kbd {
+	background-color: var(--aibtc-border-subtle);
+	border: 1px solid var(--aibtc-border-default);
+	font-family: var(--aibtc-font-mono);
+	font-size: 0.6875rem;
+	font-weight: 500;
+}
+
+/* Search dialog modal */
+site-search dialog {
+	border-color: var(--aibtc-border-default);
+	background-color: #0a0a0a;
+}
+
+@media (min-width: 50rem) {
+	site-search dialog {
+		border: 1px solid var(--aibtc-border-accent);
+		box-shadow: 0 0 40px var(--aibtc-orange-glow), var(--sl-shadow-lg);
+	}
+}
+
+/* Dialog backdrop */
+site-search dialog::backdrop {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Search input focus state */
+#starlight__search input:focus {
+	--pagefind-ui-border: var(--sl-color-accent);
+	box-shadow: 0 0 0 2px var(--aibtc-orange-glow);
+}
+
+/* Search results styling */
+#starlight__search .pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)):hover,
+#starlight__search .pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)):focus-within,
+#starlight__search .pagefind-ui__result-nested:hover,
+#starlight__search .pagefind-ui__result-nested:focus-within {
+	outline-color: var(--sl-color-accent);
+	box-shadow: 0 0 10px var(--aibtc-orange-glow);
+}
+
+/* Search result mark/highlight */
+#starlight__search mark {
+	color: var(--sl-color-accent-high);
+	font-weight: 600;
+}
