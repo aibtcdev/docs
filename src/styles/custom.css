@@ -1,8 +1,31 @@
 /* AIBTC Brand Styles — see aibtcdev/branding for official values */
 
 /* ----------------------------------------------------------------
-   Typography — Roc Grotesk (served from aibtc.com CDN)
+   Global Font Rendering Optimizations
    ---------------------------------------------------------------- */
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+/* Enhanced rendering for headings (more expensive but worth it) */
+h1, h2, h3, h4, h5, h6,
+.site-title,
+.hero h1 {
+	text-rendering: geometricPrecision;
+}
+
+/* ----------------------------------------------------------------
+   Typography — Roc Grotesk (served from aibtc.com CDN)
+
+   Font families:
+   - 'Roc Grotesk': Regular width (body text, h5-h6)
+   - 'Roc Grotesk Wide': Medium width (h3-h4, navigation)
+   - 'Roc Grotesk ExtraWide': Extra width (h1-h2, hero text)
+   ---------------------------------------------------------------- */
+
+/* Regular width — body text and small headings */
 @font-face {
 	font-family: 'Roc Grotesk';
 	src: url('https://aibtc.com/fonts/RocGrotesk-Regular.woff2') format('woff2');
@@ -11,16 +34,18 @@
 	font-display: swap;
 }
 
+/* Wide Medium — mid-level headings */
 @font-face {
-	font-family: 'Roc Grotesk';
+	font-family: 'Roc Grotesk Wide';
 	src: url('https://aibtc.com/fonts/RocGrotesk-WideMedium.woff2') format('woff2');
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
 }
 
+/* ExtraWide Medium — major headings (h1, h2) for futuristic appearance */
 @font-face {
-	font-family: 'Roc Grotesk Wide';
+	font-family: 'Roc Grotesk ExtraWide';
 	src: url('https://aibtc.com/fonts/RocGrotesk-ExtraWideMedium.woff2') format('woff2');
 	font-weight: 500;
 	font-style: normal;
@@ -31,14 +56,40 @@
    Color Palette
    ---------------------------------------------------------------- */
 :root {
-	/* Accent (orange) */
+	/* Accent (orange) — primary brand color */
 	--sl-color-accent-low: #1a0800;
 	--sl-color-accent: #FF4F03;
 	--sl-color-accent-high: #FF9B6B;
 
-	/* Brand secondary / tertiary */
+	/* Orange variants for gradients and extended usage */
+	--aibtc-orange: #FF4F03;
+	--aibtc-orange-dark: #cc3f02;
+	--aibtc-orange-light: #ff7a3d;
+	--aibtc-orange-glow: rgba(255, 79, 3, 0.3);
+
+	/* Electric Blue — tech-inspired accent */
 	--aibtc-blue: #0634D0;
+	--aibtc-blue-low: #030a26;
+	--aibtc-blue-high: #4d6ff7;
+	--aibtc-blue-glow: rgba(6, 52, 208, 0.3);
+
+	/* Purple — tertiary accent */
 	--aibtc-purple: #A855F7;
+	--aibtc-purple-low: #1a0d26;
+	--aibtc-purple-high: #c99afc;
+	--aibtc-purple-glow: rgba(168, 85, 247, 0.3);
+
+	/* Red — danger aside accent */
+	--aibtc-red: #ef4444;
+	--aibtc-red-low: #1a0808;
+	--aibtc-red-high: #fca5a5;
+	--aibtc-red-glow: rgba(239, 68, 68, 0.3);
+
+	/* Brand gradients as CSS custom properties */
+	--aibtc-gradient-orange-blue: linear-gradient(135deg, var(--aibtc-orange) 0%, var(--aibtc-blue) 100%);
+	--aibtc-gradient-orange-purple: linear-gradient(135deg, var(--aibtc-orange) 0%, var(--aibtc-purple) 100%);
+	--aibtc-gradient-blue-purple: linear-gradient(135deg, var(--aibtc-blue) 0%, var(--aibtc-purple) 100%);
+	--aibtc-gradient-subtle: linear-gradient(135deg, rgba(255, 79, 3, 0.1) 0%, rgba(6, 52, 208, 0.1) 100%);
 
 	/* Neutrals */
 	--sl-color-white: #ffffff;
@@ -50,59 +101,319 @@
 	--sl-color-gray-6: #1a1a1a;
 	--sl-color-black: #000000;
 
-	/* Typography */
+	/* Typography — font stacks */
 	--sl-font: 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	--sl-font-heading: 'Roc Grotesk Wide', 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	--sl-font-heading: 'Roc Grotesk ExtraWide', 'Roc Grotesk Wide', 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	--aibtc-font-wide: 'Roc Grotesk Wide', 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	--aibtc-font-extrawide: 'Roc Grotesk ExtraWide', 'Roc Grotesk Wide', 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+	/* Monospace — code blocks and inline code */
+	--aibtc-font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
 }
 
 /* ----------------------------------------------------------------
    Dark mode (forced — only mode)
    ---------------------------------------------------------------- */
 :root[data-theme='dark'] {
+	/* Backgrounds */
 	--sl-color-bg: #000000;
 	--sl-color-bg-nav: #0a0a0a;
 	--sl-color-bg-sidebar: #0a0a0a;
-	--sl-color-hairline-light: #1a1a1a;
-	--sl-color-hairline: #2a2a2a;
+	--sl-color-bg-inline-code: #161618;
+
+	/* Hairlines — layered for visual hierarchy */
+	--sl-color-hairline-light: #1a1a1c;
+	--sl-color-hairline: #252528;
+	--sl-color-hairline-shade: #0a0a0a;
+
+	/* Extended border tokens for different contexts */
+	--aibtc-border-subtle: #1e1e22;
+	--aibtc-border-default: #2a2a2e;
+	--aibtc-border-strong: #3a3a40;
+	--aibtc-border-accent: rgba(255, 79, 3, 0.25);
+	--aibtc-border-accent-strong: rgba(255, 79, 3, 0.5);
 }
 
 /* ----------------------------------------------------------------
-   Links
+   Links — smooth transitions and brand hover states
    ---------------------------------------------------------------- */
 a {
 	color: var(--sl-color-accent);
+	transition: color 0.2s ease;
 }
 
 a:hover {
 	color: var(--sl-color-accent-high);
 }
 
+/* Content links — underline on hover */
+.sl-markdown-content a:not(:where(.not-content *, .sl-link-button, .sl-link-card)) {
+	text-decoration: none;
+}
+
+.sl-markdown-content a:not(:where(.not-content *, .sl-link-button, .sl-link-card)):hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+/* Sidebar links — accent highlight on hover/active */
+nav.sidebar-content a {
+	font-family: var(--sl-font);
+	font-weight: 400;
+	font-size: 0.9375rem;
+	letter-spacing: 0;
+	transition: color 0.2s ease, background-color 0.2s ease;
+	border-radius: 4px;
+}
+
+nav.sidebar-content a:hover {
+	color: var(--sl-color-accent-high);
+	background-color: rgba(255, 79, 3, 0.05);
+}
+
+nav.sidebar-content a[aria-current="page"] {
+	color: var(--sl-color-accent);
+	background-color: rgba(255, 79, 3, 0.08);
+	font-weight: 500;
+}
+
+/* Table of contents links — active indicator */
+starlight-toc a {
+	font-family: var(--sl-font);
+	font-size: 0.875rem;
+	font-weight: 400;
+	transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+starlight-toc a:hover {
+	color: var(--sl-color-accent-high);
+}
+
+starlight-toc a[aria-current="true"] {
+	color: var(--sl-color-accent);
+	border-color: var(--sl-color-accent);
+}
+
+/* Anchor links (heading links) */
+.sl-anchor-link {
+	transition: opacity 0.2s ease;
+}
+
+.sl-anchor-link:hover {
+	color: var(--sl-color-accent);
+}
+
 /* ----------------------------------------------------------------
-   Focus ring — AIBTC orange
+   Focus ring — AIBTC orange with glow effects
    ---------------------------------------------------------------- */
 :focus-visible {
 	outline: 2px solid var(--sl-color-accent);
 	outline-offset: 2px;
+	box-shadow: 0 0 0 4px var(--aibtc-orange-glow);
+}
+
+/* Prevent double glow on elements with custom focus styling */
+.sl-link-button:focus-visible,
+site-search button:focus-visible,
+.pagination-links a:focus-visible,
+.sl-link-card:focus-visible {
+	box-shadow: 0 0 20px var(--aibtc-orange-glow);
+}
+
+/* Input elements — enhanced focus */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+	outline: 2px solid var(--sl-color-accent);
+	outline-offset: 0;
+	box-shadow: 0 0 0 4px var(--aibtc-orange-glow);
+}
+
+/* Checkbox and radio — smaller glow */
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+	box-shadow: 0 0 0 3px var(--aibtc-orange-glow);
+}
+
+/* ----------------------------------------------------------------
+   Typography Hierarchy — Heading Styles
+   ---------------------------------------------------------------- */
+
+/* Major headings (h1, h2) — ExtraWide for futuristic, bold appearance */
+.sl-markdown-content h1:not(:where(.not-content *)) {
+	font-family: var(--aibtc-font-extrawide);
+	font-size: clamp(2rem, 5vw, 2.625rem);
+	font-weight: 500;
+	letter-spacing: -0.02em;
+	line-height: 1.15;
+}
+
+.sl-markdown-content h2:not(:where(.not-content *)) {
+	font-family: var(--aibtc-font-extrawide);
+	font-size: clamp(1.5rem, 4vw, 2rem);
+	font-weight: 500;
+	letter-spacing: -0.015em;
+	line-height: 1.2;
+}
+
+/* Mid-level headings (h3, h4) — Wide for distinction */
+.sl-markdown-content h3:not(:where(.not-content *)) {
+	font-family: var(--aibtc-font-wide);
+	font-size: clamp(1.25rem, 3vw, 1.5rem);
+	font-weight: 500;
+	letter-spacing: -0.01em;
+	line-height: 1.25;
+}
+
+.sl-markdown-content h4:not(:where(.not-content *)) {
+	font-family: var(--aibtc-font-wide);
+	font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+	font-weight: 500;
+	letter-spacing: -0.005em;
+	line-height: 1.3;
+}
+
+/* Small headings (h5, h6) — Regular for readability */
+.sl-markdown-content h5:not(:where(.not-content *)) {
+	font-family: var(--sl-font);
+	font-size: 1.125rem;
+	font-weight: 500;
+	letter-spacing: 0;
+	line-height: 1.4;
+}
+
+.sl-markdown-content h6:not(:where(.not-content *)) {
+	font-family: var(--sl-font);
+	font-size: 1rem;
+	font-weight: 500;
+	letter-spacing: 0;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+
+/* Page title in hero section */
+.hero h1 {
+	font-family: var(--aibtc-font-extrawide);
+	font-size: clamp(2.5rem, 7vw, 3.5rem);
+	font-weight: 500;
+	letter-spacing: -0.025em;
+	line-height: 1.1;
 }
 
 /* ----------------------------------------------------------------
    Site title
    ---------------------------------------------------------------- */
 .site-title {
-	font-weight: 700;
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	letter-spacing: -0.01em;
 }
 
 /* ----------------------------------------------------------------
-   Hero buttons — dark text on orange
+   Navigation and Sidebar Typography
    ---------------------------------------------------------------- */
-.hero a.primary {
+
+/* Sidebar group labels/headers */
+.sidebar-group-label,
+nav.sidebar-content summary {
+	font-family: var(--aibtc-font-wide);
+	font-size: 0.8125rem;
+	font-weight: 500;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-3);
+}
+
+/* Top navigation bar links */
+.top-level-link {
+	font-family: var(--aibtc-font-wide);
+	font-size: 0.875rem;
+	font-weight: 500;
+	letter-spacing: 0;
+}
+
+/* Mobile menu */
+.mobile-menu-toggle {
+	font-family: var(--aibtc-font-wide);
+}
+
+/* Pagination (prev/next) link title */
+.pagination-links a .link-title {
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	color: var(--sl-color-white);
+	transition: color 0.2s ease;
+}
+
+.pagination-links a:hover .link-title {
+	color: var(--sl-color-accent-high);
+}
+
+/* ----------------------------------------------------------------
+   Buttons — brand styling with transitions
+
+   Starlight uses .sl-link-button with variants:
+   - .primary: Main CTA (orange background, black text)
+   - .secondary: Alternative action (orange border, orange text)
+   - .minimal: Text-only button
+   ---------------------------------------------------------------- */
+
+/* Base button styling */
+.sl-link-button {
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	transition: all 0.2s ease;
+}
+
+/* Primary button — orange background, black text */
+.sl-link-button.primary {
 	background-color: var(--sl-color-accent);
+	border-color: var(--sl-color-accent);
 	color: var(--sl-color-black);
 }
 
-.hero a.primary:hover {
+.sl-link-button.primary:hover {
 	background-color: var(--sl-color-accent-high);
+	border-color: var(--sl-color-accent-high);
 	color: var(--sl-color-black);
+	box-shadow: 0 0 20px var(--aibtc-orange-glow);
+}
+
+/* Secondary button — transparent with orange border */
+.sl-link-button.secondary {
+	background-color: transparent;
+	border-color: var(--sl-color-accent);
+	color: var(--sl-color-accent);
+}
+
+.sl-link-button.secondary:hover {
+	background-color: rgba(255, 79, 3, 0.1);
+	border-color: var(--sl-color-accent-high);
+	color: var(--sl-color-accent-high);
+	box-shadow: 0 0 15px var(--aibtc-orange-glow);
+}
+
+/* Minimal button — text only with underline on hover */
+.sl-link-button.minimal {
+	color: var(--sl-color-gray-2);
+}
+
+.sl-link-button.minimal:hover {
+	color: var(--sl-color-accent);
+	text-decoration: underline;
+}
+
+/* Hero section buttons — larger with more padding */
+.hero .sl-link-button {
+	padding: 0.75rem 1.5rem;
+	font-size: 1rem;
+}
+
+@media (min-width: 50rem) {
+	.hero .sl-link-button {
+		padding: 1rem 2rem;
+		font-size: 1.125rem;
+	}
 }
 
 /* ----------------------------------------------------------------
@@ -121,7 +432,1127 @@ a:hover {
 	background-image: url('../assets/aibtcdev-pattern-3-640px.png');
 	background-repeat: repeat;
 	background-size: 640px;
-	opacity: 0.03;
+	opacity: 0.04;
 	pointer-events: none;
 	z-index: 0;
+}
+
+/* ----------------------------------------------------------------
+   Code blocks — brand-appropriate treatments
+
+   Uses system monospace stack with JetBrains Mono as preferred.
+   JetBrains Mono is a modern, readable programming font with
+   ligature support and good character distinction.
+   ---------------------------------------------------------------- */
+
+/* Inline code */
+.sl-markdown-content code:not(:where(.not-content *)) {
+	font-family: var(--aibtc-font-mono);
+	font-size: 0.875em;
+	font-weight: 400;
+	background-color: var(--sl-color-bg-inline-code);
+	border: 1px solid var(--aibtc-border-subtle);
+	border-radius: 4px;
+	padding: 0.125em 0.35em;
+	white-space: nowrap;
+}
+
+/* Code blocks (pre elements) */
+.sl-markdown-content pre:not(:where(.not-content *)) {
+	font-family: var(--aibtc-font-mono);
+	font-size: 0.875rem;
+	line-height: 1.6;
+	background-color: #0c0c0e;
+	border: 1px solid var(--aibtc-border-default);
+	border-left: 3px solid var(--aibtc-border-accent-strong);
+	border-radius: 6px;
+	position: relative;
+}
+
+/* Expressive Code blocks (Starlight's syntax highlighter) */
+.expressive-code {
+	--ec-brdCol: var(--aibtc-border-default);
+	--ec-frm-edBg: #0c0c0e;
+	--ec-frm-edActTabBrdCol: var(--sl-color-accent);
+	--ec-codeFontFml: var(--aibtc-font-mono);
+	--ec-codeFontSize: 0.875rem;
+	--ec-codeLnHt: 1.6;
+}
+
+.expressive-code .frame {
+	border: 1px solid var(--aibtc-border-default);
+	border-left: 3px solid var(--aibtc-border-accent-strong);
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+/* Code block filename/tab styling */
+.expressive-code .header {
+	font-family: var(--aibtc-font-wide);
+	font-size: 0.8125rem;
+	font-weight: 500;
+	letter-spacing: 0.01em;
+}
+
+/* ----------------------------------------------------------------
+   Asides — brand-aligned callout styling with gradient borders
+   ---------------------------------------------------------------- */
+
+/* Base aside styling */
+.starlight-aside {
+	border-radius: 8px;
+	border: 1px solid var(--aibtc-border-subtle);
+	border-left-width: 4px;
+	position: relative;
+	overflow: hidden;
+}
+
+/* Gradient top border accent */
+.starlight-aside::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: var(--aside-gradient, var(--aibtc-gradient-subtle));
+	opacity: 0.6;
+}
+
+/* Aside title styling */
+.starlight-aside .starlight-aside__title {
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	letter-spacing: 0.01em;
+}
+
+/* Aside icon accent */
+.starlight-aside .starlight-aside__icon {
+	color: var(--sl-color-asides-text-accent);
+}
+
+/* Note — uses blue accent */
+.starlight-aside--note {
+	--sl-color-asides-text-accent: var(--aibtc-blue-high);
+	--sl-color-asides-border: var(--aibtc-blue);
+	--aside-gradient: linear-gradient(90deg, var(--aibtc-blue) 0%, var(--aibtc-purple) 100%);
+	background: linear-gradient(
+		135deg,
+		var(--aibtc-blue-low) 0%,
+		rgba(6, 52, 208, 0.05) 100%
+	);
+	border-left-color: var(--aibtc-blue);
+	box-shadow: inset 0 0 30px rgba(6, 52, 208, 0.05);
+}
+
+/* Tip — uses purple accent */
+.starlight-aside--tip {
+	--sl-color-asides-text-accent: var(--aibtc-purple-high);
+	--sl-color-asides-border: var(--aibtc-purple);
+	--aside-gradient: linear-gradient(90deg, var(--aibtc-purple) 0%, var(--aibtc-blue) 100%);
+	background: linear-gradient(
+		135deg,
+		var(--aibtc-purple-low) 0%,
+		rgba(168, 85, 247, 0.05) 100%
+	);
+	border-left-color: var(--aibtc-purple);
+	box-shadow: inset 0 0 30px rgba(168, 85, 247, 0.05);
+}
+
+/* Caution — uses orange (brand primary) */
+.starlight-aside--caution {
+	--sl-color-asides-text-accent: var(--aibtc-orange-light);
+	--sl-color-asides-border: var(--aibtc-orange);
+	--aside-gradient: linear-gradient(90deg, var(--aibtc-orange) 0%, var(--aibtc-orange-light) 100%);
+	background: linear-gradient(
+		135deg,
+		rgba(255, 79, 3, 0.08) 0%,
+		rgba(255, 79, 3, 0.02) 100%
+	);
+	border-left-color: var(--aibtc-orange);
+	box-shadow: inset 0 0 30px rgba(255, 79, 3, 0.03);
+}
+
+/* Danger — uses red accent */
+.starlight-aside--danger {
+	--sl-color-asides-text-accent: var(--aibtc-red-high);
+	--sl-color-asides-border: var(--aibtc-red);
+	--aside-gradient: linear-gradient(90deg, var(--aibtc-red) 0%, var(--aibtc-orange) 100%);
+	background: linear-gradient(
+		135deg,
+		var(--aibtc-red-low) 0%,
+		rgba(239, 68, 68, 0.05) 100%
+	);
+	border-left-color: var(--aibtc-red);
+	box-shadow: inset 0 0 30px rgba(239, 68, 68, 0.05);
+}
+
+/* ----------------------------------------------------------------
+   Tables — brand border treatments with enhanced styling
+   ---------------------------------------------------------------- */
+
+/* Table wrapper with gradient border effect */
+.sl-markdown-content table:not(:where(.not-content *)) {
+	border: 1px solid var(--aibtc-border-default);
+	border-radius: 8px;
+	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Header row with stronger visual weight */
+.sl-markdown-content th:not(:where(.not-content *)) {
+	background: linear-gradient(
+		180deg,
+		rgba(255, 79, 3, 0.08) 0%,
+		rgba(255, 79, 3, 0.02) 100%
+	);
+	border-bottom: 2px solid var(--aibtc-border-accent);
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	font-size: 0.875rem;
+	letter-spacing: 0.01em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-1);
+}
+
+/* Table cells */
+.sl-markdown-content td:not(:where(.not-content *)) {
+	border-bottom: 1px solid var(--aibtc-border-subtle);
+	transition: background-color 0.15s ease;
+}
+
+/* Cell borders (horizontal) */
+.sl-markdown-content :is(th, td):not(:where(.not-content *)) {
+	border-bottom-color: var(--aibtc-border-subtle);
+}
+
+/* Alternating row backgrounds for readability */
+.sl-markdown-content tr:nth-child(even):not(:where(.not-content *)) td {
+	background-color: rgba(255, 255, 255, 0.01);
+}
+
+/* Row hover effect */
+.sl-markdown-content tr:not(:where(.not-content *)):hover td {
+	background-color: rgba(255, 79, 3, 0.03);
+}
+
+/* Last row no border */
+.sl-markdown-content tr:last-child:not(:where(.not-content *)) td {
+	border-bottom: none;
+}
+
+/* ----------------------------------------------------------------
+   Cards and containers — subtle gradient accents
+   ---------------------------------------------------------------- */
+
+/* Card link styling (Starlight card components) */
+.sl-link-card {
+	border: 1px solid var(--aibtc-border-default);
+	border-radius: 10px;
+	background: linear-gradient(
+		145deg,
+		rgba(255, 79, 3, 0.04) 0%,
+		rgba(0, 0, 0, 0.3) 50%,
+		rgba(6, 52, 208, 0.04) 100%
+	);
+	transition: all 0.25s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+/* Gradient border on hover using pseudo-element */
+.sl-link-card::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: 10px;
+	padding: 1px;
+	background: linear-gradient(135deg, var(--aibtc-orange) 0%, var(--aibtc-blue) 100%);
+	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	opacity: 0;
+	transition: opacity 0.25s ease;
+	pointer-events: none;
+}
+
+.sl-link-card:hover::before {
+	opacity: 1;
+}
+
+.sl-link-card:hover {
+	border-color: transparent;
+	box-shadow: 0 0 30px var(--aibtc-orange-glow), 0 4px 20px rgba(0, 0, 0, 0.3);
+	transform: translateY(-2px);
+}
+
+/* Card title styling */
+.sl-link-card .sl-link-card__title {
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	color: var(--sl-color-white);
+	transition: color 0.2s ease;
+}
+
+.sl-link-card:hover .sl-link-card__title {
+	color: var(--sl-color-accent-high);
+}
+
+/* Card description */
+.sl-link-card .sl-link-card__description {
+	color: var(--sl-color-gray-2);
+}
+
+/* Card icon accent */
+.sl-link-card svg {
+	color: var(--sl-color-accent);
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.sl-link-card:hover svg {
+	color: var(--sl-color-accent-high);
+	transform: translateX(3px);
+}
+
+/* Card grid layout improvements */
+.sl-link-card-grid {
+	gap: 1.5rem;
+}
+
+/* Blockquotes */
+.sl-markdown-content blockquote:not(:where(.not-content *)) {
+	border-left: 4px solid var(--aibtc-border-accent-strong);
+	background: linear-gradient(
+		90deg,
+		rgba(255, 79, 3, 0.06) 0%,
+		rgba(255, 79, 3, 0.02) 50%,
+		transparent 100%
+	);
+	padding: 1rem 1.25rem;
+	border-radius: 0 8px 8px 0;
+	position: relative;
+}
+
+/* Blockquote quotation mark decoration */
+.sl-markdown-content blockquote:not(:where(.not-content *))::before {
+	content: '"';
+	position: absolute;
+	top: -0.25rem;
+	left: 0.5rem;
+	font-size: 3rem;
+	font-family: var(--aibtc-font-extrawide);
+	color: var(--aibtc-orange-glow);
+	line-height: 1;
+}
+
+/* ----------------------------------------------------------------
+   Dividers and Separators — branded styling
+   ---------------------------------------------------------------- */
+
+/* Horizontal rules — gradient treatment */
+.sl-markdown-content hr:not(:where(.not-content *)) {
+	border: 0;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--aibtc-border-default) 10%,
+		var(--aibtc-orange) 50%,
+		var(--aibtc-border-default) 90%,
+		transparent 100%
+	);
+	margin: 2rem 0;
+	opacity: 0.6;
+}
+
+/* Details/Accordion summary borders */
+.sl-markdown-content details:not(:where(.not-content *)) {
+	border: 1px solid var(--aibtc-border-subtle);
+	border-radius: 8px;
+	padding: 0;
+	overflow: hidden;
+}
+
+.sl-markdown-content details:not(:where(.not-content *)) summary {
+	padding: 0.75rem 1rem;
+	cursor: pointer;
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	background-color: rgba(255, 255, 255, 0.02);
+	border-bottom: 1px solid transparent;
+	transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.sl-markdown-content details:not(:where(.not-content *))[open] summary {
+	border-bottom-color: var(--aibtc-border-subtle);
+}
+
+.sl-markdown-content details:not(:where(.not-content *)) summary:hover {
+	background-color: rgba(255, 79, 3, 0.05);
+	color: var(--sl-color-accent-high);
+}
+
+.sl-markdown-content details:not(:where(.not-content *)) summary::marker {
+	color: var(--sl-color-accent);
+}
+
+/* Content inside details */
+.sl-markdown-content details:not(:where(.not-content *)) > :not(summary) {
+	padding: 0 1rem;
+}
+
+/* Definition lists */
+.sl-markdown-content dl:not(:where(.not-content *)) {
+	margin: 1.5rem 0;
+}
+
+.sl-markdown-content dt:not(:where(.not-content *)) {
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	color: var(--sl-color-white);
+	margin-top: 1rem;
+	padding-bottom: 0.25rem;
+	border-bottom: 1px solid var(--aibtc-border-accent);
+}
+
+.sl-markdown-content dd:not(:where(.not-content *)) {
+	margin-left: 1rem;
+	padding-left: 1rem;
+	border-left: 2px solid var(--aibtc-border-subtle);
+	color: var(--sl-color-gray-2);
+}
+
+/* Section divider with decorative element */
+.section-divider {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin: 2.5rem 0;
+}
+
+.section-divider::before,
+.section-divider::after {
+	content: '';
+	flex: 1;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		var(--aibtc-border-default)
+	);
+}
+
+.section-divider::after {
+	background: linear-gradient(
+		90deg,
+		var(--aibtc-border-default),
+		transparent
+	);
+}
+
+/* ----------------------------------------------------------------
+   Search — brand styling for search button and modal
+   ---------------------------------------------------------------- */
+
+/* Search button (in header) */
+site-search button[data-open-modal] {
+	transition: border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+@media (min-width: 50rem) {
+	site-search button[data-open-modal] {
+		border-color: var(--aibtc-border-default);
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+
+	site-search button[data-open-modal]:hover {
+		border-color: var(--sl-color-accent);
+		box-shadow: 0 0 15px var(--aibtc-orange-glow);
+		color: var(--sl-color-white);
+	}
+}
+
+/* Keyboard shortcut styling */
+site-search button > kbd {
+	background-color: var(--aibtc-border-subtle);
+	border: 1px solid var(--aibtc-border-default);
+	font-family: var(--aibtc-font-mono);
+	font-size: 0.6875rem;
+	font-weight: 500;
+}
+
+/* Search dialog modal */
+site-search dialog {
+	border-color: var(--aibtc-border-default);
+	background-color: #0a0a0a;
+}
+
+@media (min-width: 50rem) {
+	site-search dialog {
+		border: 1px solid var(--aibtc-border-accent);
+		box-shadow: 0 0 40px var(--aibtc-orange-glow), var(--sl-shadow-lg);
+	}
+}
+
+/* Dialog backdrop */
+site-search dialog::backdrop {
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Search input focus state */
+#starlight__search input:focus {
+	--pagefind-ui-border: var(--sl-color-accent);
+	box-shadow: 0 0 0 2px var(--aibtc-orange-glow);
+}
+
+/* Search results styling */
+#starlight__search .pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)):hover,
+#starlight__search .pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)):focus-within,
+#starlight__search .pagefind-ui__result-nested:hover,
+#starlight__search .pagefind-ui__result-nested:focus-within {
+	outline-color: var(--sl-color-accent);
+	box-shadow: 0 0 10px var(--aibtc-orange-glow);
+}
+
+/* Search result mark/highlight */
+#starlight__search mark {
+	color: var(--sl-color-accent-high);
+	font-weight: 600;
+}
+
+/* ----------------------------------------------------------------
+   Pagination — brand styling for prev/next navigation
+   ---------------------------------------------------------------- */
+
+.pagination-links a {
+	border-color: var(--aibtc-border-default);
+	background-color: rgba(0, 0, 0, 0.3);
+	transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.pagination-links a:hover {
+	border-color: var(--sl-color-accent);
+	background-color: rgba(255, 79, 3, 0.05);
+	box-shadow: 0 0 20px var(--aibtc-orange-glow);
+}
+
+/* Arrow icons */
+.pagination-links a svg {
+	color: var(--sl-color-gray-3);
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.pagination-links a:hover svg {
+	color: var(--sl-color-accent);
+}
+
+/* Subtle arrow animation on hover */
+.pagination-links a[rel="prev"]:hover svg {
+	transform: translateX(-3px);
+}
+
+.pagination-links a[rel="next"]:hover svg {
+	transform: translateX(3px);
+}
+
+/* "Previous"/"Next" label */
+.pagination-links a > span:first-of-type {
+	color: var(--sl-color-gray-3);
+	font-size: 0.875rem;
+}
+
+/* ----------------------------------------------------------------
+   Sidebar and Navigation — subtle background treatments
+   ---------------------------------------------------------------- */
+
+/* Sidebar panel */
+.sidebar-pane {
+	background: linear-gradient(
+		180deg,
+		rgba(10, 10, 10, 0.95) 0%,
+		rgba(0, 0, 0, 0.98) 100%
+	);
+	border-right: 1px solid var(--aibtc-border-subtle);
+}
+
+/* Sidebar content area */
+nav.sidebar-content {
+	background: transparent;
+}
+
+/* Sidebar group styling */
+.sidebar-group {
+	margin-bottom: 0.5rem;
+}
+
+/* Sidebar section headers with subtle accent */
+.sidebar-group > details > summary,
+.sidebar-group > .large {
+	position: relative;
+}
+
+.sidebar-group > details > summary::before,
+.sidebar-group > .large::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 2px;
+	height: 1rem;
+	background-color: var(--sl-color-accent);
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+
+.sidebar-group > details[open] > summary::before {
+	opacity: 0.5;
+}
+
+/* Top navigation bar */
+header.header {
+	background: linear-gradient(
+		180deg,
+		rgba(10, 10, 10, 0.98) 0%,
+		rgba(10, 10, 10, 0.95) 100%
+	);
+	border-bottom: 1px solid var(--aibtc-border-subtle);
+	backdrop-filter: blur(8px);
+	position: relative;
+}
+
+/* Gradient accent line below header */
+header.header::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--aibtc-orange) 30%,
+		var(--aibtc-blue) 70%,
+		transparent 100%
+	);
+	opacity: 0.3;
+}
+
+/* Mobile menu panel */
+starlight-menu-button + nav {
+	background: linear-gradient(
+		135deg,
+		rgba(10, 10, 10, 0.98) 0%,
+		rgba(0, 0, 0, 0.99) 100%
+	);
+}
+
+/* Breadcrumbs area (if present) */
+.breadcrumbs {
+	padding: 0.5rem 0;
+	border-bottom: 1px solid var(--aibtc-border-subtle);
+	margin-bottom: 1rem;
+}
+
+/* Table of contents panel */
+.right-sidebar {
+	background: transparent;
+}
+
+.right-sidebar-panel {
+	background: linear-gradient(
+		180deg,
+		transparent 0%,
+		rgba(255, 79, 3, 0.01) 100%
+	);
+	border-left: 1px solid var(--aibtc-border-subtle);
+	padding-left: 1rem;
+}
+
+/* Table of contents heading */
+starlight-toc h2 {
+	font-family: var(--aibtc-font-wide);
+	font-size: 0.75rem;
+	font-weight: 500;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-3);
+	margin-bottom: 0.75rem;
+}
+
+/* Main content area subtle separation */
+.main-frame {
+	position: relative;
+}
+
+/* Content wrapper */
+.content-panel {
+	background: transparent;
+}
+
+/* Footer styling */
+footer.footer {
+	border-top: 1px solid var(--aibtc-border-subtle);
+	background: linear-gradient(
+		180deg,
+		rgba(0, 0, 0, 0.5) 0%,
+		rgba(10, 10, 10, 0.8) 100%
+	);
+	position: relative;
+}
+
+/* Gradient accent line above footer */
+footer.footer::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--aibtc-blue) 30%,
+		var(--aibtc-orange) 70%,
+		transparent 100%
+	);
+	opacity: 0.3;
+}
+
+/* Mobile navigation bottom bar */
+.mobile-preferences {
+	background: rgba(10, 10, 10, 0.98);
+	border-top: 1px solid var(--aibtc-border-subtle);
+	backdrop-filter: blur(8px);
+}
+
+/* ----------------------------------------------------------------
+   Polish: Additional Hover Transitions
+   ---------------------------------------------------------------- */
+
+/* Social icons in header/footer */
+.social-icons a {
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+	color: var(--sl-color-accent);
+	transform: translateY(-2px);
+}
+
+/* Menu toggle button (mobile) */
+starlight-menu-button button {
+	transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+starlight-menu-button button:hover {
+	color: var(--sl-color-accent);
+	background-color: rgba(255, 79, 3, 0.05);
+}
+
+/* Breadcrumb links */
+.breadcrumbs a {
+	transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+	color: var(--sl-color-accent-high);
+}
+
+/* Breadcrumb separator styling */
+.breadcrumbs li:not(:last-child)::after {
+	color: var(--sl-color-gray-4);
+}
+
+/* Header navigation links */
+nav[aria-label="Main"] a {
+	transition: color 0.2s ease, background-color 0.2s ease;
+	border-radius: 4px;
+}
+
+nav[aria-label="Main"] a:hover {
+	color: var(--sl-color-accent-high);
+	background-color: rgba(255, 79, 3, 0.05);
+}
+
+/* Logo/site title hover */
+.site-title {
+	transition: color 0.2s ease;
+}
+
+a:has(.site-title):hover .site-title {
+	color: var(--sl-color-accent-high);
+}
+
+/* Copy button in code blocks */
+.expressive-code .copy button {
+	transition: color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.expressive-code .copy button:hover {
+	color: var(--sl-color-accent);
+	background-color: rgba(255, 79, 3, 0.1);
+}
+
+/* ----------------------------------------------------------------
+   Polish: Hero Section Gradient Accents
+   ---------------------------------------------------------------- */
+
+/* Hero container enhancements */
+.hero {
+	position: relative;
+	overflow: hidden;
+}
+
+/* Subtle gradient glow behind hero content */
+.hero::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 120%;
+	height: 200%;
+	background: radial-gradient(
+		ellipse at center,
+		rgba(255, 79, 3, 0.08) 0%,
+		rgba(6, 52, 208, 0.04) 40%,
+		transparent 70%
+	);
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* Ensure hero content is above the glow */
+.hero > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* Hero title — optional gradient text effect */
+.hero h1 {
+	background: linear-gradient(
+		135deg,
+		var(--sl-color-white) 0%,
+		var(--sl-color-white) 60%,
+		var(--aibtc-orange-light) 100%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* Hero tagline styling */
+.hero .tagline {
+	color: var(--sl-color-gray-2);
+	font-size: 1.25rem;
+	max-width: 45ch;
+}
+
+@media (min-width: 50rem) {
+	.hero .tagline {
+		font-size: 1.5rem;
+	}
+}
+
+/* Hero action buttons container */
+.hero .actions {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+/* Decorative gradient line below hero */
+.hero::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 10%;
+	right: 10%;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--aibtc-orange) 20%,
+		var(--aibtc-blue) 80%,
+		transparent 100%
+	);
+	opacity: 0.4;
+	z-index: 1;
+}
+
+/* ----------------------------------------------------------------
+   Polish: Visual Consistency Adjustments
+   ---------------------------------------------------------------- */
+
+/* Unordered/ordered list styling */
+.sl-markdown-content ul:not(:where(.not-content *)),
+.sl-markdown-content ol:not(:where(.not-content *)) {
+	padding-left: 1.5rem;
+}
+
+.sl-markdown-content li:not(:where(.not-content *)) {
+	margin-bottom: 0.5rem;
+}
+
+.sl-markdown-content li:not(:where(.not-content *))::marker {
+	color: var(--sl-color-accent);
+}
+
+/* Nested list spacing */
+.sl-markdown-content li:not(:where(.not-content *)) > ul,
+.sl-markdown-content li:not(:where(.not-content *)) > ol {
+	margin-top: 0.5rem;
+}
+
+/* Inline code in table cells — consistent sizing */
+.sl-markdown-content td:not(:where(.not-content *)) code {
+	font-size: 0.8125rem;
+	padding: 0.1em 0.3em;
+	word-break: break-all;
+}
+
+/* Strong text in tables — slightly brighter */
+.sl-markdown-content td:not(:where(.not-content *)) strong,
+.sl-markdown-content th:not(:where(.not-content *)) strong {
+	color: var(--sl-color-white);
+}
+
+/* Paragraph spacing */
+.sl-markdown-content p:not(:where(.not-content *)) {
+	line-height: 1.7;
+}
+
+/* Ensure consistent link styling in all contexts */
+.sl-markdown-content li a:not(:where(.not-content *, .sl-link-button)) {
+	color: var(--sl-color-accent);
+}
+
+.sl-markdown-content li a:not(:where(.not-content *, .sl-link-button)):hover {
+	color: var(--sl-color-accent-high);
+}
+
+/* External link indicator (optional, subtle) */
+.sl-markdown-content a[href^="http"]:not([href*="aibtc."]):not([href*="docs.aibtc"]):not(:where(.not-content *, .sl-link-button))::after {
+	content: ' \2197';
+	font-size: 0.75em;
+	opacity: 0.6;
+}
+
+/* Allow code in tables to wrap */
+.sl-markdown-content td code:not(:where(.not-content *)) {
+	white-space: normal;
+}
+
+/* Last updated/edit link styling */
+.meta {
+	font-size: 0.875rem;
+	color: var(--sl-color-gray-3);
+}
+
+.meta a {
+	color: var(--sl-color-gray-2);
+	transition: color 0.2s ease;
+}
+
+.meta a:hover {
+	color: var(--sl-color-accent);
+}
+
+/* ----------------------------------------------------------------
+   Polish: Mobile Responsiveness and Accessibility
+   ---------------------------------------------------------------- */
+
+/* Reduced motion preference — disable animations for accessibility */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	/* Keep static styles but remove motion */
+	.sl-link-card:hover {
+		transform: none;
+	}
+
+	.pagination-links a[rel="prev"]:hover svg,
+	.pagination-links a[rel="next"]:hover svg {
+		transform: none;
+	}
+
+	.sl-link-card:hover svg {
+		transform: none;
+	}
+
+	.social-icons a:hover {
+		transform: none;
+	}
+}
+
+/* Mobile touch target sizes — ensure minimum 44px */
+@media (max-width: 50rem) {
+	/* Mobile menu button */
+	starlight-menu-button button {
+		min-width: 44px;
+		min-height: 44px;
+	}
+
+	/* Search button on mobile */
+	site-search button[data-open-modal] {
+		min-width: 44px;
+		min-height: 44px;
+	}
+
+	/* Sidebar links */
+	nav.sidebar-content a {
+		padding: 0.625rem 0.75rem;
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+	}
+
+	/* Social icons */
+	.social-icons a {
+		min-width: 44px;
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+/* Table responsiveness — horizontal scroll on mobile */
+@media (max-width: 50rem) {
+	.sl-markdown-content table:not(:where(.not-content *)) {
+		display: block;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	/* Prevent table cells from being too narrow */
+	.sl-markdown-content th:not(:where(.not-content *)),
+	.sl-markdown-content td:not(:where(.not-content *)) {
+		min-width: 8rem;
+		white-space: nowrap;
+	}
+
+	/* Allow contract addresses to wrap */
+	.sl-markdown-content td:not(:where(.not-content *)) code {
+		white-space: normal;
+		word-break: break-all;
+	}
+}
+
+/* Hero adjustments for mobile */
+@media (max-width: 50rem) {
+	.hero::before {
+		opacity: 0.5;
+	}
+
+	.hero::after {
+		left: 5%;
+		right: 5%;
+	}
+
+	.hero .actions {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.hero .sl-link-button {
+		width: 100%;
+		text-align: center;
+		justify-content: center;
+	}
+}
+
+/* Card grid responsiveness */
+@media (max-width: 50rem) {
+	.sl-link-card-grid {
+		gap: 1rem;
+	}
+
+	.sl-link-card {
+		padding: 1rem;
+	}
+}
+
+/* Sidebar mobile adjustments */
+@media (max-width: 50rem) {
+	.sidebar-pane {
+		background: rgba(0, 0, 0, 0.98);
+	}
+
+	/* Ensure sidebar content is scrollable */
+	nav.sidebar-content {
+		max-height: calc(100vh - 4rem);
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+}
+
+/* Code block adjustments for mobile */
+@media (max-width: 50rem) {
+	.sl-markdown-content pre:not(:where(.not-content *)) {
+		font-size: 0.8125rem;
+		border-radius: 4px;
+	}
+
+	.expressive-code .frame {
+		border-radius: 4px;
+	}
+
+	/* Ensure code is scrollable horizontally */
+	.expressive-code pre {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+}
+
+/* Pagination on mobile — stack vertically */
+@media (max-width: 30rem) {
+	.pagination-links {
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.pagination-links a {
+		width: 100%;
+	}
+}
+
+/* Asides on mobile — reduce padding */
+@media (max-width: 50rem) {
+	.starlight-aside {
+		padding: 0.75rem;
+		border-radius: 6px;
+	}
+}
+
+/* Print styles — clean output for printing */
+@media print {
+	.hero::before,
+	.hero::after,
+	header.header::after,
+	footer.footer::before,
+	.main-pane::before {
+		display: none;
+	}
+
+	.sl-link-card:hover {
+		box-shadow: none;
+		transform: none;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: underline;
+	}
 }
