@@ -1182,3 +1182,91 @@ a:has(.site-title):hover .site-title {
 .sl-markdown-content details summary:hover {
 	color: var(--sl-color-accent-high);
 }
+
+/* ----------------------------------------------------------------
+   Polish: Hero Section Gradient Accents
+   ---------------------------------------------------------------- */
+
+/* Hero container enhancements */
+.hero {
+	position: relative;
+	overflow: hidden;
+}
+
+/* Subtle gradient glow behind hero content */
+.hero::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 120%;
+	height: 200%;
+	background: radial-gradient(
+		ellipse at center,
+		rgba(255, 79, 3, 0.08) 0%,
+		rgba(6, 52, 208, 0.04) 40%,
+		transparent 70%
+	);
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* Ensure hero content is above the glow */
+.hero > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* Hero title — optional gradient text effect */
+.hero h1 {
+	background: linear-gradient(
+		135deg,
+		var(--sl-color-white) 0%,
+		var(--sl-color-white) 60%,
+		var(--aibtc-orange-light) 100%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* Hero tagline styling */
+.hero .tagline {
+	color: var(--sl-color-gray-2);
+	font-size: 1.25rem;
+	max-width: 45ch;
+}
+
+@media (min-width: 50rem) {
+	.hero .tagline {
+		font-size: 1.5rem;
+	}
+}
+
+/* Hero action buttons container */
+.hero .actions {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+/* Decorative gradient line below hero */
+.hero::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 10%;
+	right: 10%;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--aibtc-orange) 20%,
+		var(--aibtc-blue) 80%,
+		transparent 100%
+	);
+	opacity: 0.4;
+	z-index: 1;
+}
