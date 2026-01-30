@@ -27,9 +27,9 @@ export default defineConfig({
 			],
 			sidebar: [
 				{ label: 'Directory', slug: 'directory' },
-				{ label: 'Tokens', slug: 'reference/tokens' },
-				{ label: 'Networks', slug: 'reference/networks' },
 				{ label: 'Glossary', slug: 'glossary' },
+				{ label: 'Networks', slug: 'reference/networks' },
+				{ label: 'Tokens', slug: 'reference/tokens' },
 			],
 		}),
 	],
