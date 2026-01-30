@@ -751,16 +751,107 @@ starlight-toc a {
 	line-height: 1;
 }
 
-/* Horizontal rules */
+/* ----------------------------------------------------------------
+   Dividers and Separators — branded styling
+   ---------------------------------------------------------------- */
+
+/* Horizontal rules — gradient treatment */
 .sl-markdown-content hr:not(:where(.not-content *)) {
 	border: 0;
 	height: 1px;
 	background: linear-gradient(
 		90deg,
 		transparent 0%,
-		var(--aibtc-border-default) 20%,
-		var(--aibtc-border-default) 80%,
+		var(--aibtc-border-default) 10%,
+		var(--aibtc-orange) 50%,
+		var(--aibtc-border-default) 90%,
 		transparent 100%
+	);
+	margin: 2rem 0;
+	opacity: 0.6;
+}
+
+/* Details/Accordion summary borders */
+.sl-markdown-content details:not(:where(.not-content *)) {
+	border: 1px solid var(--aibtc-border-subtle);
+	border-radius: 8px;
+	padding: 0;
+	overflow: hidden;
+}
+
+.sl-markdown-content details:not(:where(.not-content *)) summary {
+	padding: 0.75rem 1rem;
+	cursor: pointer;
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	background-color: rgba(255, 255, 255, 0.02);
+	border-bottom: 1px solid transparent;
+	transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.sl-markdown-content details:not(:where(.not-content *))[open] summary {
+	border-bottom-color: var(--aibtc-border-subtle);
+}
+
+.sl-markdown-content details:not(:where(.not-content *)) summary:hover {
+	background-color: rgba(255, 79, 3, 0.05);
+}
+
+.sl-markdown-content details:not(:where(.not-content *)) summary::marker {
+	color: var(--sl-color-accent);
+}
+
+/* Content inside details */
+.sl-markdown-content details:not(:where(.not-content *)) > :not(summary) {
+	padding: 0 1rem;
+}
+
+/* Definition lists */
+.sl-markdown-content dl:not(:where(.not-content *)) {
+	margin: 1.5rem 0;
+}
+
+.sl-markdown-content dt:not(:where(.not-content *)) {
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	color: var(--sl-color-white);
+	margin-top: 1rem;
+	padding-bottom: 0.25rem;
+	border-bottom: 1px solid var(--aibtc-border-accent);
+}
+
+.sl-markdown-content dd:not(:where(.not-content *)) {
+	margin-left: 1rem;
+	padding-left: 1rem;
+	border-left: 2px solid var(--aibtc-border-subtle);
+	color: var(--sl-color-gray-2);
+}
+
+/* Section divider with decorative element */
+.section-divider {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin: 2.5rem 0;
+}
+
+.section-divider::before,
+.section-divider::after {
+	content: '';
+	flex: 1;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		var(--aibtc-border-default)
+	);
+}
+
+.section-divider::after {
+	background: linear-gradient(
+		90deg,
+		var(--aibtc-border-default),
+		transparent
 	);
 }
 
