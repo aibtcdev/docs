@@ -10,10 +10,11 @@ export default defineConfig({
 	adapter: cloudflare({ imageService: 'compile' }),
 	integrations: [
 		starlight({
-			title: 'Docs',
+			title: 'AIBTC',
 			logo: {
 				light: './src/assets/aibtc-logo-k.svg',
 				dark: './src/assets/aibtc-logo-ko.svg',
+				replacesTitle: true,
 			},
 			favicon: '/favicon.png',
 			customCss: ['./src/styles/custom.css'],
@@ -27,9 +28,9 @@ export default defineConfig({
 			],
 			sidebar: [
 				{ label: 'Directory', slug: 'directory' },
-				{ label: 'Tokens', slug: 'reference/tokens' },
-				{ label: 'Networks', slug: 'reference/networks' },
 				{ label: 'Glossary', slug: 'glossary' },
+				{ label: 'Networks', slug: 'reference/networks' },
+				{ label: 'Tokens', slug: 'reference/tokens' },
 			],
 		}),
 	],

@@ -7,6 +7,14 @@ html {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
+	/* Base font size bump (two steps up from default 16px) */
+	font-size: 18px;
+}
+
+@media (min-width: 50rem) {
+	html {
+		font-size: 19px;
+	}
 }
 
 /* Enhanced rendering for headings (more expensive but worth it) */
@@ -156,25 +164,37 @@ a:hover {
 	text-underline-offset: 3px;
 }
 
-/* Sidebar links — accent highlight on hover/active */
+/* Sidebar links — color change only (no background highlight) for less eye strain */
 nav.sidebar-content a {
 	font-family: var(--sl-font);
 	font-weight: 400;
-	font-size: 0.9375rem;
+	font-size: 1rem;
 	letter-spacing: 0;
-	transition: color 0.2s ease, background-color 0.2s ease;
+	transition: color 0.2s ease;
 	border-radius: 4px;
+	color: var(--sl-color-gray-2);
+	background-color: transparent !important;
 }
 
 nav.sidebar-content a:hover {
 	color: var(--sl-color-accent-high);
-	background-color: rgba(255, 79, 3, 0.05);
+	background-color: transparent !important;
 }
 
 nav.sidebar-content a[aria-current="page"] {
 	color: var(--sl-color-accent);
-	background-color: rgba(255, 79, 3, 0.08);
+	background-color: transparent !important;
 	font-weight: 500;
+}
+
+/* Override any Starlight default sidebar highlights */
+.sidebar a[aria-current="page"],
+.sidebar-content a[aria-current="page"],
+[data-current-parent] > a,
+.sidebar a:hover,
+.sidebar-content a:hover {
+	background: transparent !important;
+	background-color: transparent !important;
 }
 
 /* Table of contents links — active indicator */
@@ -301,12 +321,22 @@ input[type="radio"]:focus-visible {
 }
 
 /* ----------------------------------------------------------------
-   Site title
+   Site title — hidden when logo replaces title
    ---------------------------------------------------------------- */
 .site-title {
-	font-family: var(--aibtc-font-wide);
-	font-weight: 500;
-	letter-spacing: -0.01em;
+	/* Logo replaces title - hide any residual text */
+	font-size: 0;
+}
+
+/* Logo sizing */
+.site-title img {
+	height: 2rem;
+}
+
+@media (min-width: 50rem) {
+	.site-title img {
+		height: 2.5rem;
+	}
 }
 
 /* ----------------------------------------------------------------
@@ -365,17 +395,17 @@ nav.sidebar-content summary {
 	transition: all 0.2s ease;
 }
 
-/* Primary button — orange background, black text */
+/* Primary button — orange background, white text for better contrast */
 .sl-link-button.primary {
 	background-color: var(--sl-color-accent);
 	border-color: var(--sl-color-accent);
-	color: var(--sl-color-black);
+	color: var(--sl-color-white);
 }
 
 .sl-link-button.primary:hover {
 	background-color: var(--sl-color-accent-high);
 	border-color: var(--sl-color-accent-high);
-	color: var(--sl-color-black);
+	color: var(--sl-color-white);
 	box-shadow: 0 0 20px var(--aibtc-orange-glow);
 }
 
@@ -393,14 +423,15 @@ nav.sidebar-content summary {
 	box-shadow: 0 0 15px var(--aibtc-orange-glow);
 }
 
-/* Minimal button — text only with underline on hover */
+/* Minimal button — text only, bright orange on hover, no underline */
 .sl-link-button.minimal {
 	color: var(--sl-color-gray-2);
+	text-decoration: none;
 }
 
 .sl-link-button.minimal:hover {
 	color: var(--sl-color-accent);
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 /* Hero section buttons — larger with more padding */
@@ -614,12 +645,14 @@ nav.sidebar-content summary {
 	letter-spacing: 0.01em;
 	text-transform: uppercase;
 	color: var(--sl-color-gray-1);
+	padding: 0.75rem 1rem;
 }
 
 /* Table cells */
 .sl-markdown-content td:not(:where(.not-content *)) {
 	border-bottom: 1px solid var(--aibtc-border-subtle);
 	transition: background-color 0.15s ease;
+	padding: 0.625rem 1rem;
 }
 
 /* Cell borders (horizontal) */
@@ -1087,9 +1120,27 @@ starlight-toc h2 {
 	position: relative;
 }
 
-/* Content wrapper */
+/* Content wrapper — wider content area */
 .content-panel {
 	background: transparent;
+	max-width: 100%;
+}
+
+/* Make main content use more available space */
+.main-pane {
+	--sl-content-width: 55rem;
+}
+
+/* Content takes full width of its container */
+.sl-markdown-content {
+	max-width: 100%;
+}
+
+/* Wider content on larger screens */
+@media (min-width: 72rem) {
+	.main-pane {
+		--sl-content-width: 60rem;
+	}
 }
 
 /* Footer styling */
@@ -1132,14 +1183,47 @@ footer.footer::before {
    Polish: Additional Hover Transitions
    ---------------------------------------------------------------- */
 
-/* Social icons in header/footer */
+/* Social icons in header/footer — even spacing, no divider */
+.social-icons {
+	gap: 0.75rem;
+}
+
 .social-icons a {
 	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-icons a svg {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+@media (min-width: 50rem) {
+	.social-icons {
+		gap: 1rem;
+	}
+
+	.social-icons a svg {
+		width: 1.75rem;
+		height: 1.75rem;
+	}
 }
 
 .social-icons a:hover {
 	color: var(--sl-color-accent);
 	transform: translateY(-2px);
+}
+
+/* Remove divider after social icons in header */
+header .social-icons::after,
+.header .social-icons::after {
+	display: none;
+}
+
+/* Hide any vertical dividers in header right section */
+header .right-group [role="separator"],
+.header .right-group [role="separator"],
+.right-group::before {
+	display: none;
 }
 
 /* Menu toggle button (mobile) */
@@ -1204,6 +1288,12 @@ a:has(.site-title):hover .site-title {
 .hero {
 	position: relative;
 	overflow: hidden;
+	text-align: left;
+}
+
+/* Hero content alignment */
+.hero > .stack {
+	align-items: flex-start;
 }
 
 /* Subtle gradient glow behind hero content */
@@ -1231,17 +1321,9 @@ a:has(.site-title):hover .site-title {
 	z-index: 1;
 }
 
-/* Hero title — optional gradient text effect */
+/* Hero title — clean, solid white text */
 .hero h1 {
-	background: linear-gradient(
-		135deg,
-		var(--sl-color-white) 0%,
-		var(--sl-color-white) 60%,
-		var(--aibtc-orange-light) 100%
-	);
-	-webkit-background-clip: text;
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
+	color: var(--sl-color-white);
 }
 
 /* Hero tagline styling */
@@ -1257,12 +1339,12 @@ a:has(.site-title):hover .site-title {
 	}
 }
 
-/* Hero action buttons container */
+/* Hero action buttons container — left-aligned */
 .hero .actions {
 	display: flex;
 	gap: 1rem;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: flex-start;
 }
 
 /* Decorative gradient line below hero */
@@ -1324,6 +1406,30 @@ a:has(.site-title):hover .site-title {
 /* Paragraph spacing */
 .sl-markdown-content p:not(:where(.not-content *)) {
 	line-height: 1.7;
+	margin-bottom: 1.25rem;
+}
+
+/* Consistent section spacing */
+.sl-markdown-content h2:not(:where(.not-content *)) {
+	margin-top: 2.5rem;
+	margin-bottom: 1rem;
+}
+
+.sl-markdown-content h3:not(:where(.not-content *)) {
+	margin-top: 2rem;
+	margin-bottom: 0.75rem;
+}
+
+/* Card grid spacing improvements */
+.sl-link-card-grid {
+	margin-top: 1.5rem;
+	margin-bottom: 2rem;
+}
+
+/* Table spacing */
+.sl-markdown-content table:not(:where(.not-content *)) {
+	margin-top: 1rem;
+	margin-bottom: 1.5rem;
 }
 
 /* Ensure consistent link styling in all contexts */
@@ -1335,11 +1441,18 @@ a:has(.site-title):hover .site-title {
 	color: var(--sl-color-accent-high);
 }
 
-/* External link indicator (optional, subtle) */
-.sl-markdown-content a[href^="http"]:not([href*="aibtc."]):not([href*="docs.aibtc"]):not(:where(.not-content *, .sl-link-button))::after {
+/* External link indicator — exclude cards and buttons */
+.sl-markdown-content a[href^="http"]:not([href*="aibtc."]):not([href*="docs.aibtc"]):not(:where(.not-content *, .sl-link-button, .sl-link-card))::after {
 	content: ' \2197';
 	font-size: 0.75em;
-	opacity: 0.6;
+	color: var(--sl-color-gray-3);
+	opacity: 0.7;
+}
+
+/* No external arrow on cards */
+.sl-link-card::after,
+.sl-link-card a::after {
+	content: none !important;
 }
 
 /* Allow code in tables to wrap */
@@ -1426,6 +1539,13 @@ a:has(.site-title):hover .site-title {
 		align-items: center;
 		justify-content: center;
 	}
+
+	/* Site title link */
+	.site-title a {
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+	}
 }
 
 /* Table responsiveness — horizontal scroll on mobile */
@@ -1463,13 +1583,13 @@ a:has(.site-title):hover .site-title {
 
 	.hero .actions {
 		flex-direction: column;
-		align-items: stretch;
+		align-items: flex-start;
 	}
 
 	.hero .sl-link-button {
-		width: 100%;
-		text-align: center;
-		justify-content: center;
+		width: auto;
+		text-align: left;
+		justify-content: flex-start;
 	}
 }
 
