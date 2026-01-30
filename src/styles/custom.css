@@ -157,3 +157,37 @@ a:hover {
 	pointer-events: none;
 	z-index: 0;
 }
+
+/* ----------------------------------------------------------------
+   Code blocks — brand-appropriate treatments
+   ---------------------------------------------------------------- */
+
+/* Inline code */
+.sl-markdown-content code:not(:where(.not-content *)) {
+	background-color: var(--sl-color-bg-inline-code);
+	border: 1px solid var(--aibtc-border-subtle);
+	border-radius: 4px;
+}
+
+/* Code blocks (pre elements) */
+.sl-markdown-content pre:not(:where(.not-content *)) {
+	background-color: #0c0c0e;
+	border: 1px solid var(--aibtc-border-default);
+	border-left: 3px solid var(--aibtc-border-accent-strong);
+	border-radius: 6px;
+	position: relative;
+}
+
+/* Expressive Code blocks (Starlight's syntax highlighter) */
+.expressive-code {
+	--ec-brdCol: var(--aibtc-border-default);
+	--ec-frm-edBg: #0c0c0e;
+	--ec-frm-edActTabBrdCol: var(--sl-color-accent);
+}
+
+.expressive-code .frame {
+	border: 1px solid var(--aibtc-border-default);
+	border-left: 3px solid var(--aibtc-border-accent-strong);
+	border-radius: 6px;
+	overflow: hidden;
+}
