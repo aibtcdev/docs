@@ -10,10 +10,11 @@ export default defineConfig({
 	adapter: cloudflare({ imageService: 'compile' }),
 	integrations: [
 		starlight({
-			title: 'Docs',
+			title: '',
 			logo: {
 				light: './src/assets/aibtc-logo-k.svg',
 				dark: './src/assets/aibtc-logo-ko.svg',
+				replacesTitle: true,
 			},
 			favicon: '/favicon.png',
 			customCss: ['./src/styles/custom.css'],
