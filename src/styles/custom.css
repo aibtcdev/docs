@@ -31,14 +31,34 @@
    Color Palette
    ---------------------------------------------------------------- */
 :root {
-	/* Accent (orange) */
+	/* Accent (orange) — primary brand color */
 	--sl-color-accent-low: #1a0800;
 	--sl-color-accent: #FF4F03;
 	--sl-color-accent-high: #FF9B6B;
 
-	/* Brand secondary / tertiary */
+	/* Orange variants for gradients and extended usage */
+	--aibtc-orange: #FF4F03;
+	--aibtc-orange-dark: #cc3f02;
+	--aibtc-orange-light: #ff7a3d;
+	--aibtc-orange-glow: rgba(255, 79, 3, 0.3);
+
+	/* Electric Blue — tech-inspired accent */
 	--aibtc-blue: #0634D0;
+	--aibtc-blue-low: #030a26;
+	--aibtc-blue-high: #4d6ff7;
+	--aibtc-blue-glow: rgba(6, 52, 208, 0.3);
+
+	/* Purple — tertiary accent */
 	--aibtc-purple: #A855F7;
+	--aibtc-purple-low: #1a0d26;
+	--aibtc-purple-high: #c99afc;
+	--aibtc-purple-glow: rgba(168, 85, 247, 0.3);
+
+	/* Brand gradients as CSS custom properties */
+	--aibtc-gradient-orange-blue: linear-gradient(135deg, var(--aibtc-orange) 0%, var(--aibtc-blue) 100%);
+	--aibtc-gradient-orange-purple: linear-gradient(135deg, var(--aibtc-orange) 0%, var(--aibtc-purple) 100%);
+	--aibtc-gradient-blue-purple: linear-gradient(135deg, var(--aibtc-blue) 0%, var(--aibtc-purple) 100%);
+	--aibtc-gradient-subtle: linear-gradient(135deg, rgba(255, 79, 3, 0.1) 0%, rgba(6, 52, 208, 0.1) 100%);
 
 	/* Neutrals */
 	--sl-color-white: #ffffff;
