@@ -1445,6 +1445,13 @@ a:has(.site-title):hover .site-title {
 		align-items: center;
 		justify-content: center;
 	}
+
+	/* Site title link */
+	.site-title a {
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+	}
 }
 
 /* Table responsiveness — horizontal scroll on mobile */
