@@ -1144,6 +1144,18 @@ footer.footer::before {
 	transition: color 0.2s ease, transform 0.2s ease;
 }
 
+.social-icons a svg {
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+@media (min-width: 50rem) {
+	.social-icons a svg {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+}
+
 .social-icons a:hover {
 	color: var(--sl-color-accent);
 	transform: translateY(-2px);
