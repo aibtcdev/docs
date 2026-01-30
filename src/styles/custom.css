@@ -2,7 +2,14 @@
 
 /* ----------------------------------------------------------------
    Typography — Roc Grotesk (served from aibtc.com CDN)
+
+   Font families:
+   - 'Roc Grotesk': Regular width (body text, h5-h6)
+   - 'Roc Grotesk Wide': Medium width (h3-h4, navigation)
+   - 'Roc Grotesk ExtraWide': Extra width (h1-h2, hero text)
    ---------------------------------------------------------------- */
+
+/* Regular width — body text and small headings */
 @font-face {
 	font-family: 'Roc Grotesk';
 	src: url('https://aibtc.com/fonts/RocGrotesk-Regular.woff2') format('woff2');
@@ -11,16 +18,18 @@
 	font-display: swap;
 }
 
+/* Wide Medium — mid-level headings */
 @font-face {
-	font-family: 'Roc Grotesk';
+	font-family: 'Roc Grotesk Wide';
 	src: url('https://aibtc.com/fonts/RocGrotesk-WideMedium.woff2') format('woff2');
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
 }
 
+/* ExtraWide Medium — major headings (h1, h2) for futuristic appearance */
 @font-face {
-	font-family: 'Roc Grotesk Wide';
+	font-family: 'Roc Grotesk ExtraWide';
 	src: url('https://aibtc.com/fonts/RocGrotesk-ExtraWideMedium.woff2') format('woff2');
 	font-weight: 500;
 	font-style: normal;
@@ -70,9 +79,11 @@
 	--sl-color-gray-6: #1a1a1a;
 	--sl-color-black: #000000;
 
-	/* Typography */
+	/* Typography — font stacks */
 	--sl-font: 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	--sl-font-heading: 'Roc Grotesk Wide', 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	--sl-font-heading: 'Roc Grotesk ExtraWide', 'Roc Grotesk Wide', 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	--aibtc-font-wide: 'Roc Grotesk Wide', 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	--aibtc-font-extrawide: 'Roc Grotesk ExtraWide', 'Roc Grotesk Wide', 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 /* ----------------------------------------------------------------
