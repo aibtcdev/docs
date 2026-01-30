@@ -126,14 +126,65 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* ----------------------------------------------------------------
-   Links
+   Links — smooth transitions and brand hover states
    ---------------------------------------------------------------- */
 a {
 	color: var(--sl-color-accent);
+	transition: color 0.2s ease;
 }
 
 a:hover {
 	color: var(--sl-color-accent-high);
+}
+
+/* Content links — underline on hover */
+.sl-markdown-content a:not(:where(.not-content *, .sl-link-button, .sl-link-card)) {
+	text-decoration: none;
+}
+
+.sl-markdown-content a:not(:where(.not-content *, .sl-link-button, .sl-link-card)):hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+/* Sidebar links — accent highlight on hover/active */
+nav.sidebar-content a {
+	transition: color 0.2s ease, background-color 0.2s ease;
+	border-radius: 4px;
+}
+
+nav.sidebar-content a:hover {
+	color: var(--sl-color-accent-high);
+	background-color: rgba(255, 79, 3, 0.05);
+}
+
+nav.sidebar-content a[aria-current="page"] {
+	color: var(--sl-color-accent);
+	background-color: rgba(255, 79, 3, 0.08);
+	font-weight: 500;
+}
+
+/* Table of contents links — active indicator */
+starlight-toc a {
+	transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+starlight-toc a:hover {
+	color: var(--sl-color-accent-high);
+}
+
+starlight-toc a[aria-current="true"] {
+	color: var(--sl-color-accent);
+	border-color: var(--sl-color-accent);
+}
+
+/* Anchor links (heading links) */
+.sl-anchor-link {
+	transition: opacity 0.2s ease;
+}
+
+.sl-anchor-link:hover {
+	color: var(--sl-color-accent);
 }
 
 /* ----------------------------------------------------------------
