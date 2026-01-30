@@ -372,17 +372,17 @@ nav.sidebar-content summary {
 	transition: all 0.2s ease;
 }
 
-/* Primary button — orange background, black text */
+/* Primary button — orange background, white text for better contrast */
 .sl-link-button.primary {
 	background-color: var(--sl-color-accent);
 	border-color: var(--sl-color-accent);
-	color: var(--sl-color-black);
+	color: var(--sl-color-white);
 }
 
 .sl-link-button.primary:hover {
 	background-color: var(--sl-color-accent-high);
 	border-color: var(--sl-color-accent-high);
-	color: var(--sl-color-black);
+	color: var(--sl-color-white);
 	box-shadow: 0 0 20px var(--aibtc-orange-glow);
 }
 
@@ -1250,17 +1250,9 @@ a:has(.site-title):hover .site-title {
 	z-index: 1;
 }
 
-/* Hero title — optional gradient text effect */
+/* Hero title — clean, solid white text */
 .hero h1 {
-	background: linear-gradient(
-		135deg,
-		var(--sl-color-white) 0%,
-		var(--sl-color-white) 60%,
-		var(--aibtc-orange-light) 100%
-	);
-	-webkit-background-clip: text;
-	background-clip: text;
-	-webkit-text-fill-color: transparent;
+	color: var(--sl-color-white);
 }
 
 /* Hero tagline styling */
