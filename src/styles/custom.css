@@ -287,17 +287,33 @@ starlight-toc a {
 
 /* ----------------------------------------------------------------
    Code blocks — brand-appropriate treatments
+
+   Uses system monospace stack with JetBrains Mono as preferred.
+   JetBrains Mono is a modern, readable programming font with
+   ligature support and good character distinction.
    ---------------------------------------------------------------- */
+
+/* Monospace font stack */
+:root {
+	--aibtc-font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
+}
 
 /* Inline code */
 .sl-markdown-content code:not(:where(.not-content *)) {
+	font-family: var(--aibtc-font-mono);
+	font-size: 0.875em;
+	font-weight: 400;
 	background-color: var(--sl-color-bg-inline-code);
 	border: 1px solid var(--aibtc-border-subtle);
 	border-radius: 4px;
+	padding: 0.125em 0.35em;
 }
 
 /* Code blocks (pre elements) */
 .sl-markdown-content pre:not(:where(.not-content *)) {
+	font-family: var(--aibtc-font-mono);
+	font-size: 0.875rem;
+	line-height: 1.6;
 	background-color: #0c0c0e;
 	border: 1px solid var(--aibtc-border-default);
 	border-left: 3px solid var(--aibtc-border-accent-strong);
@@ -310,6 +326,9 @@ starlight-toc a {
 	--ec-brdCol: var(--aibtc-border-default);
 	--ec-frm-edBg: #0c0c0e;
 	--ec-frm-edActTabBrdCol: var(--sl-color-accent);
+	--ec-codeFontFml: var(--aibtc-font-mono);
+	--ec-codeFontSize: 0.875rem;
+	--ec-codeLnHt: 1.6;
 }
 
 .expressive-code .frame {
@@ -317,6 +336,14 @@ starlight-toc a {
 	border-left: 3px solid var(--aibtc-border-accent-strong);
 	border-radius: 6px;
 	overflow: hidden;
+}
+
+/* Code block filename/tab styling */
+.expressive-code .header {
+	font-family: var(--aibtc-font-wide);
+	font-size: 0.8125rem;
+	font-weight: 500;
+	letter-spacing: 0.01em;
 }
 
 /* ----------------------------------------------------------------
