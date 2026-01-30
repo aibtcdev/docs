@@ -268,16 +268,70 @@ starlight-toc a {
 }
 
 /* ----------------------------------------------------------------
-   Hero buttons — dark text on orange
+   Buttons — brand styling with transitions
+
+   Starlight uses .sl-link-button with variants:
+   - .primary: Main CTA (orange background, black text)
+   - .secondary: Alternative action (orange border, orange text)
+   - .minimal: Text-only button
    ---------------------------------------------------------------- */
-.hero a.primary {
+
+/* Base button styling */
+.sl-link-button {
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	transition: all 0.2s ease;
+}
+
+/* Primary button — orange background, black text */
+.sl-link-button.primary {
 	background-color: var(--sl-color-accent);
+	border-color: var(--sl-color-accent);
 	color: var(--sl-color-black);
 }
 
-.hero a.primary:hover {
+.sl-link-button.primary:hover {
 	background-color: var(--sl-color-accent-high);
+	border-color: var(--sl-color-accent-high);
 	color: var(--sl-color-black);
+	box-shadow: 0 0 20px var(--aibtc-orange-glow);
+}
+
+/* Secondary button — transparent with orange border */
+.sl-link-button.secondary {
+	background-color: transparent;
+	border-color: var(--sl-color-accent);
+	color: var(--sl-color-accent);
+}
+
+.sl-link-button.secondary:hover {
+	background-color: rgba(255, 79, 3, 0.1);
+	border-color: var(--sl-color-accent-high);
+	color: var(--sl-color-accent-high);
+	box-shadow: 0 0 15px var(--aibtc-orange-glow);
+}
+
+/* Minimal button — text only with underline on hover */
+.sl-link-button.minimal {
+	color: var(--sl-color-gray-2);
+}
+
+.sl-link-button.minimal:hover {
+	color: var(--sl-color-accent);
+	text-decoration: underline;
+}
+
+/* Hero section buttons — larger with more padding */
+.hero .sl-link-button {
+	padding: 0.75rem 1.5rem;
+	font-size: 1rem;
+}
+
+@media (min-width: 50rem) {
+	.hero .sl-link-button {
+		padding: 1rem 2rem;
+		font-size: 1.125rem;
+	}
 }
 
 /* ----------------------------------------------------------------
