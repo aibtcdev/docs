@@ -55,7 +55,11 @@ All AIBTC services follow the same pattern: **mainnet** on `aibtc.com`, **testne
 
 ## More
 
-- **All AIBTC repositories:** [github.com/aibtcdev](https://github.com/aibtcdev)
-- **x402 Protocol spec:** [x402.org](https://x402.org)
-- **Stacks documentation:** [docs.stacks.co](https://docs.stacks.co)
-- **Claude Code:** [claude.ai/code](https://claude.ai/code)
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+	<LinkCard title="AIBTC GitHub" href="https://github.com/aibtcdev" description="All repositories and source code." />
+	<LinkCard title="x402 Protocol" href="https://x402.org" description="Protocol specification." />
+	<LinkCard title="Stacks Docs" href="https://docs.stacks.co" description="Stacks blockchain documentation." />
+	<LinkCard title="Claude Code" href="https://claude.ai/code" description="AI-powered development." />
+</CardGrid>

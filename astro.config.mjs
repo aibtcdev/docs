@@ -10,7 +10,7 @@ export default defineConfig({
 	adapter: cloudflare({ imageService: 'compile' }),
 	integrations: [
 		starlight({
-			title: '',
+			title: 'AIBTC',
 			logo: {
 				light: './src/assets/aibtc-logo-k.svg',
 				dark: './src/assets/aibtc-logo-ko.svg',

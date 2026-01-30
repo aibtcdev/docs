@@ -173,17 +173,28 @@ nav.sidebar-content a {
 	transition: color 0.2s ease;
 	border-radius: 4px;
 	color: var(--sl-color-gray-2);
+	background-color: transparent !important;
 }
 
 nav.sidebar-content a:hover {
 	color: var(--sl-color-accent-high);
-	background-color: transparent;
+	background-color: transparent !important;
 }
 
 nav.sidebar-content a[aria-current="page"] {
 	color: var(--sl-color-accent);
-	background-color: transparent;
+	background-color: transparent !important;
 	font-weight: 500;
+}
+
+/* Override any Starlight default sidebar highlights */
+.sidebar a[aria-current="page"],
+.sidebar-content a[aria-current="page"],
+[data-current-parent] > a,
+.sidebar a:hover,
+.sidebar-content a:hover {
+	background: transparent !important;
+	background-color: transparent !important;
 }
 
 /* Table of contents links — active indicator */
