@@ -79,6 +79,12 @@ h1, h2, h3, h4, h5, h6,
 	--aibtc-purple-high: #c99afc;
 	--aibtc-purple-glow: rgba(168, 85, 247, 0.3);
 
+	/* Red — danger aside accent */
+	--aibtc-red: #ef4444;
+	--aibtc-red-low: #1a0808;
+	--aibtc-red-high: #fca5a5;
+	--aibtc-red-glow: rgba(239, 68, 68, 0.3);
+
 	/* Brand gradients as CSS custom properties */
 	--aibtc-gradient-orange-blue: linear-gradient(135deg, var(--aibtc-orange) 0%, var(--aibtc-blue) 100%);
 	--aibtc-gradient-orange-purple: linear-gradient(135deg, var(--aibtc-orange) 0%, var(--aibtc-purple) 100%);
@@ -100,6 +106,9 @@ h1, h2, h3, h4, h5, h6,
 	--sl-font-heading: 'Roc Grotesk ExtraWide', 'Roc Grotesk Wide', 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	--aibtc-font-wide: 'Roc Grotesk Wide', 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	--aibtc-font-extrawide: 'Roc Grotesk ExtraWide', 'Roc Grotesk Wide', 'Roc Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+	/* Monospace — code blocks and inline code */
+	--aibtc-font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
 }
 
 /* ----------------------------------------------------------------
@@ -149,6 +158,10 @@ a:hover {
 
 /* Sidebar links — accent highlight on hover/active */
 nav.sidebar-content a {
+	font-family: var(--sl-font);
+	font-weight: 400;
+	font-size: 0.9375rem;
+	letter-spacing: 0;
 	transition: color 0.2s ease, background-color 0.2s ease;
 	border-radius: 4px;
 }
@@ -166,6 +179,9 @@ nav.sidebar-content a[aria-current="page"] {
 
 /* Table of contents links — active indicator */
 starlight-toc a {
+	font-family: var(--sl-font);
+	font-size: 0.875rem;
+	font-weight: 400;
 	transition: color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -297,14 +313,6 @@ input[type="radio"]:focus-visible {
    Navigation and Sidebar Typography
    ---------------------------------------------------------------- */
 
-/* Top-level navigation items */
-nav.sidebar-content a {
-	font-family: var(--sl-font);
-	font-weight: 400;
-	font-size: 0.9375rem;
-	letter-spacing: 0;
-}
-
 /* Sidebar group labels/headers */
 .sidebar-group-label,
 nav.sidebar-content summary {
@@ -329,17 +337,16 @@ nav.sidebar-content summary {
 	font-family: var(--aibtc-font-wide);
 }
 
-/* Table of contents */
-starlight-toc a {
-	font-family: var(--sl-font);
-	font-size: 0.875rem;
-	font-weight: 400;
-}
-
-/* Pagination (prev/next) */
+/* Pagination (prev/next) link title */
 .pagination-links a .link-title {
 	font-family: var(--aibtc-font-wide);
 	font-weight: 500;
+	color: var(--sl-color-white);
+	transition: color 0.2s ease;
+}
+
+.pagination-links a:hover .link-title {
+	color: var(--sl-color-accent-high);
 }
 
 /* ----------------------------------------------------------------
@@ -438,11 +445,6 @@ starlight-toc a {
    ligature support and good character distinction.
    ---------------------------------------------------------------- */
 
-/* Monospace font stack */
-:root {
-	--aibtc-font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', monospace;
-}
-
 /* Inline code */
 .sl-markdown-content code:not(:where(.not-content *)) {
 	font-family: var(--aibtc-font-mono);
@@ -452,6 +454,7 @@ starlight-toc a {
 	border: 1px solid var(--aibtc-border-subtle);
 	border-radius: 4px;
 	padding: 0.125em 0.35em;
+	white-space: nowrap;
 }
 
 /* Code blocks (pre elements) */
@@ -494,14 +497,6 @@ starlight-toc a {
 /* ----------------------------------------------------------------
    Asides — brand-aligned callout styling with gradient borders
    ---------------------------------------------------------------- */
-
-/* Red variants for danger aside */
-:root {
-	--aibtc-red: #ef4444;
-	--aibtc-red-low: #1a0808;
-	--aibtc-red-high: #fca5a5;
-	--aibtc-red-glow: rgba(239, 68, 68, 0.3);
-}
 
 /* Base aside styling */
 .starlight-aside {
@@ -786,7 +781,7 @@ starlight-toc a {
 	font-weight: 500;
 	background-color: rgba(255, 255, 255, 0.02);
 	border-bottom: 1px solid transparent;
-	transition: background-color 0.2s ease, border-color 0.2s ease;
+	transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .sl-markdown-content details:not(:where(.not-content *))[open] summary {
@@ -795,6 +790,7 @@ starlight-toc a {
 
 .sl-markdown-content details:not(:where(.not-content *)) summary:hover {
 	background-color: rgba(255, 79, 3, 0.05);
+	color: var(--sl-color-accent-high);
 }
 
 .sl-markdown-content details:not(:where(.not-content *)) summary::marker {
@@ -958,18 +954,6 @@ site-search dialog::backdrop {
 
 .pagination-links a[rel="next"]:hover svg {
 	transform: translateX(3px);
-}
-
-/* Link title styling */
-.pagination-links a .link-title {
-	font-family: var(--aibtc-font-wide);
-	font-weight: 500;
-	color: var(--sl-color-white);
-	transition: color 0.2s ease;
-}
-
-.pagination-links a:hover .link-title {
-	color: var(--sl-color-accent-high);
 }
 
 /* "Previous"/"Next" label */
@@ -1212,15 +1196,6 @@ a:has(.site-title):hover .site-title {
 	background-color: rgba(255, 79, 3, 0.1);
 }
 
-/* Expand/collapse details marker */
-.sl-markdown-content details summary {
-	transition: color 0.2s ease;
-}
-
-.sl-markdown-content details summary:hover {
-	color: var(--sl-color-accent-high);
-}
-
 /* ----------------------------------------------------------------
    Polish: Hero Section Gradient Accents
    ---------------------------------------------------------------- */
@@ -1365,11 +1340,6 @@ a:has(.site-title):hover .site-title {
 	content: ' \2197';
 	font-size: 0.75em;
 	opacity: 0.6;
-}
-
-/* Badge-like inline elements */
-.sl-markdown-content code:not(:where(.not-content *)) {
-	white-space: nowrap;
 }
 
 /* Allow code in tables to wrap */
