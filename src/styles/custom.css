@@ -305,8 +305,15 @@ input[type="radio"]:focus-visible {
    ---------------------------------------------------------------- */
 .site-title {
 	font-family: var(--aibtc-font-wide);
+	font-size: 1.25rem;
 	font-weight: 500;
 	letter-spacing: -0.01em;
+}
+
+@media (min-width: 50rem) {
+	.site-title {
+		font-size: 1.5rem;
+	}
 }
 
 /* ----------------------------------------------------------------
