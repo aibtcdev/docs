@@ -425,7 +425,7 @@ starlight-toc a {
 	background-image: url('../assets/aibtcdev-pattern-3-640px.png');
 	background-repeat: repeat;
 	background-size: 640px;
-	opacity: 0.03;
+	opacity: 0.04;
 	pointer-events: none;
 	z-index: 0;
 }
@@ -1035,6 +1035,25 @@ header.header {
 	);
 	border-bottom: 1px solid var(--aibtc-border-subtle);
 	backdrop-filter: blur(8px);
+	position: relative;
+}
+
+/* Gradient accent line below header */
+header.header::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--aibtc-orange) 30%,
+		var(--aibtc-blue) 70%,
+		transparent 100%
+	);
+	opacity: 0.3;
 }
 
 /* Mobile menu panel */
@@ -1097,6 +1116,25 @@ footer.footer {
 		rgba(0, 0, 0, 0.5) 0%,
 		rgba(10, 10, 10, 0.8) 100%
 	);
+	position: relative;
+}
+
+/* Gradient accent line above footer */
+footer.footer::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--aibtc-blue) 30%,
+		var(--aibtc-orange) 70%,
+		transparent 100%
+	);
+	opacity: 0.3;
 }
 
 /* Mobile navigation bottom bar */
