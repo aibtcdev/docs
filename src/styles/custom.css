@@ -1391,3 +1391,198 @@ a:has(.site-title):hover .site-title {
 .meta a:hover {
 	color: var(--sl-color-accent);
 }
+
+/* ----------------------------------------------------------------
+   Polish: Mobile Responsiveness and Accessibility
+   ---------------------------------------------------------------- */
+
+/* Reduced motion preference — disable animations for accessibility */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+
+	/* Keep static styles but remove motion */
+	.sl-link-card:hover {
+		transform: none;
+	}
+
+	.pagination-links a[rel="prev"]:hover svg,
+	.pagination-links a[rel="next"]:hover svg {
+		transform: none;
+	}
+
+	.sl-link-card:hover svg {
+		transform: none;
+	}
+
+	.social-icons a:hover {
+		transform: none;
+	}
+}
+
+/* Mobile touch target sizes — ensure minimum 44px */
+@media (max-width: 50rem) {
+	/* Mobile menu button */
+	starlight-menu-button button {
+		min-width: 44px;
+		min-height: 44px;
+	}
+
+	/* Search button on mobile */
+	site-search button[data-open-modal] {
+		min-width: 44px;
+		min-height: 44px;
+	}
+
+	/* Sidebar links */
+	nav.sidebar-content a {
+		padding: 0.625rem 0.75rem;
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+	}
+
+	/* Social icons */
+	.social-icons a {
+		min-width: 44px;
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+/* Table responsiveness — horizontal scroll on mobile */
+@media (max-width: 50rem) {
+	.sl-markdown-content table:not(:where(.not-content *)) {
+		display: block;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	/* Prevent table cells from being too narrow */
+	.sl-markdown-content th:not(:where(.not-content *)),
+	.sl-markdown-content td:not(:where(.not-content *)) {
+		min-width: 8rem;
+		white-space: nowrap;
+	}
+
+	/* Allow contract addresses to wrap */
+	.sl-markdown-content td:not(:where(.not-content *)) code {
+		white-space: normal;
+		word-break: break-all;
+	}
+}
+
+/* Hero adjustments for mobile */
+@media (max-width: 50rem) {
+	.hero::before {
+		opacity: 0.5;
+	}
+
+	.hero::after {
+		left: 5%;
+		right: 5%;
+	}
+
+	.hero .actions {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.hero .sl-link-button {
+		width: 100%;
+		text-align: center;
+		justify-content: center;
+	}
+}
+
+/* Card grid responsiveness */
+@media (max-width: 50rem) {
+	.sl-link-card-grid {
+		gap: 1rem;
+	}
+
+	.sl-link-card {
+		padding: 1rem;
+	}
+}
+
+/* Sidebar mobile adjustments */
+@media (max-width: 50rem) {
+	.sidebar-pane {
+		background: rgba(0, 0, 0, 0.98);
+	}
+
+	/* Ensure sidebar content is scrollable */
+	nav.sidebar-content {
+		max-height: calc(100vh - 4rem);
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+}
+
+/* Code block adjustments for mobile */
+@media (max-width: 50rem) {
+	.sl-markdown-content pre:not(:where(.not-content *)) {
+		font-size: 0.8125rem;
+		border-radius: 4px;
+	}
+
+	.expressive-code .frame {
+		border-radius: 4px;
+	}
+
+	/* Ensure code is scrollable horizontally */
+	.expressive-code pre {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+}
+
+/* Pagination on mobile — stack vertically */
+@media (max-width: 30rem) {
+	.pagination-links {
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.pagination-links a {
+		width: 100%;
+	}
+}
+
+/* Asides on mobile — reduce padding */
+@media (max-width: 50rem) {
+	.starlight-aside {
+		padding: 0.75rem;
+		border-radius: 6px;
+	}
+}
+
+/* Print styles — clean output for printing */
+@media print {
+	.hero::before,
+	.hero::after,
+	header.header::after,
+	footer.footer::before,
+	.main-pane::before {
+		display: none;
+	}
+
+	.sl-link-card:hover {
+		box-shadow: none;
+		transform: none;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: underline;
+	}
+}
