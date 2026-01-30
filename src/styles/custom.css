@@ -1308,3 +1308,86 @@ a:has(.site-title):hover .site-title {
 	opacity: 0.4;
 	z-index: 1;
 }
+
+/* ----------------------------------------------------------------
+   Polish: Visual Consistency Adjustments
+   ---------------------------------------------------------------- */
+
+/* Unordered/ordered list styling */
+.sl-markdown-content ul:not(:where(.not-content *)),
+.sl-markdown-content ol:not(:where(.not-content *)) {
+	padding-left: 1.5rem;
+}
+
+.sl-markdown-content li:not(:where(.not-content *)) {
+	margin-bottom: 0.5rem;
+}
+
+.sl-markdown-content li:not(:where(.not-content *))::marker {
+	color: var(--sl-color-accent);
+}
+
+/* Nested list spacing */
+.sl-markdown-content li:not(:where(.not-content *)) > ul,
+.sl-markdown-content li:not(:where(.not-content *)) > ol {
+	margin-top: 0.5rem;
+}
+
+/* Inline code in table cells — consistent sizing */
+.sl-markdown-content td:not(:where(.not-content *)) code {
+	font-size: 0.8125rem;
+	padding: 0.1em 0.3em;
+	word-break: break-all;
+}
+
+/* Strong text in tables — slightly brighter */
+.sl-markdown-content td:not(:where(.not-content *)) strong,
+.sl-markdown-content th:not(:where(.not-content *)) strong {
+	color: var(--sl-color-white);
+}
+
+/* Paragraph spacing */
+.sl-markdown-content p:not(:where(.not-content *)) {
+	line-height: 1.7;
+}
+
+/* Ensure consistent link styling in all contexts */
+.sl-markdown-content li a:not(:where(.not-content *, .sl-link-button)) {
+	color: var(--sl-color-accent);
+}
+
+.sl-markdown-content li a:not(:where(.not-content *, .sl-link-button)):hover {
+	color: var(--sl-color-accent-high);
+}
+
+/* External link indicator (optional, subtle) */
+.sl-markdown-content a[href^="http"]:not([href*="aibtc."]):not([href*="docs.aibtc"]):not(:where(.not-content *, .sl-link-button))::after {
+	content: ' \2197';
+	font-size: 0.75em;
+	opacity: 0.6;
+}
+
+/* Badge-like inline elements */
+.sl-markdown-content code:not(:where(.not-content *)) {
+	white-space: nowrap;
+}
+
+/* Allow code in tables to wrap */
+.sl-markdown-content td code:not(:where(.not-content *)) {
+	white-space: normal;
+}
+
+/* Last updated/edit link styling */
+.meta {
+	font-size: 0.875rem;
+	color: var(--sl-color-gray-3);
+}
+
+.meta a {
+	color: var(--sl-color-gray-2);
+	transition: color 0.2s ease;
+}
+
+.meta a:hover {
+	color: var(--sl-color-accent);
+}
