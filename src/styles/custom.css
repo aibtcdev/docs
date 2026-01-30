@@ -1105,3 +1105,80 @@ footer.footer {
 	border-top: 1px solid var(--aibtc-border-subtle);
 	backdrop-filter: blur(8px);
 }
+
+/* ----------------------------------------------------------------
+   Polish: Additional Hover Transitions
+   ---------------------------------------------------------------- */
+
+/* Social icons in header/footer */
+.social-icons a {
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+	color: var(--sl-color-accent);
+	transform: translateY(-2px);
+}
+
+/* Menu toggle button (mobile) */
+starlight-menu-button button {
+	transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+starlight-menu-button button:hover {
+	color: var(--sl-color-accent);
+	background-color: rgba(255, 79, 3, 0.05);
+}
+
+/* Breadcrumb links */
+.breadcrumbs a {
+	transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+	color: var(--sl-color-accent-high);
+}
+
+/* Breadcrumb separator styling */
+.breadcrumbs li:not(:last-child)::after {
+	color: var(--sl-color-gray-4);
+}
+
+/* Header navigation links */
+nav[aria-label="Main"] a {
+	transition: color 0.2s ease, background-color 0.2s ease;
+	border-radius: 4px;
+}
+
+nav[aria-label="Main"] a:hover {
+	color: var(--sl-color-accent-high);
+	background-color: rgba(255, 79, 3, 0.05);
+}
+
+/* Logo/site title hover */
+.site-title {
+	transition: color 0.2s ease;
+}
+
+a:has(.site-title):hover .site-title {
+	color: var(--sl-color-accent-high);
+}
+
+/* Copy button in code blocks */
+.expressive-code .copy button {
+	transition: color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.expressive-code .copy button:hover {
+	color: var(--sl-color-accent);
+	background-color: rgba(255, 79, 3, 0.1);
+}
+
+/* Expand/collapse details marker */
+.sl-markdown-content details summary {
+	transition: color 0.2s ease;
+}
+
+.sl-markdown-content details summary:hover {
+	color: var(--sl-color-accent-high);
+}
