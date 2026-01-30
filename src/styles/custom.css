@@ -593,20 +593,58 @@ starlight-toc a {
 }
 
 /* ----------------------------------------------------------------
-   Tables — brand border treatments
+   Tables — brand border treatments with enhanced styling
    ---------------------------------------------------------------- */
+
+/* Table wrapper with gradient border effect */
 .sl-markdown-content table:not(:where(.not-content *)) {
-	border: 1px solid var(--aibtc-border-subtle);
-	border-radius: 6px;
+	border: 1px solid var(--aibtc-border-default);
+	border-radius: 8px;
 	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Header row with stronger visual weight */
+.sl-markdown-content th:not(:where(.not-content *)) {
+	background: linear-gradient(
+		180deg,
+		rgba(255, 79, 3, 0.08) 0%,
+		rgba(255, 79, 3, 0.02) 100%
+	);
+	border-bottom: 2px solid var(--aibtc-border-accent);
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	font-size: 0.875rem;
+	letter-spacing: 0.01em;
+	text-transform: uppercase;
+	color: var(--sl-color-gray-1);
+}
+
+/* Table cells */
+.sl-markdown-content td:not(:where(.not-content *)) {
+	border-bottom: 1px solid var(--aibtc-border-subtle);
+	transition: background-color 0.15s ease;
+}
+
+/* Cell borders (horizontal) */
 .sl-markdown-content :is(th, td):not(:where(.not-content *)) {
 	border-bottom-color: var(--aibtc-border-subtle);
 }
 
-.sl-markdown-content th:not(:where(.not-content *)) {
-	background-color: rgba(255, 255, 255, 0.02);
+/* Alternating row backgrounds for readability */
+.sl-markdown-content tr:nth-child(even):not(:where(.not-content *)) td {
+	background-color: rgba(255, 255, 255, 0.01);
+}
+
+/* Row hover effect */
+.sl-markdown-content tr:not(:where(.not-content *)):hover td {
+	background-color: rgba(255, 79, 3, 0.03);
+}
+
+/* Last row no border */
+.sl-markdown-content tr:last-child:not(:where(.not-content *)) td {
+	border-bottom: none;
 }
 
 /* ----------------------------------------------------------------
