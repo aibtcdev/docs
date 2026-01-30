@@ -191,3 +191,108 @@ a:hover {
 	border-radius: 6px;
 	overflow: hidden;
 }
+
+/* ----------------------------------------------------------------
+   Asides — brand-aligned callout styling
+   ---------------------------------------------------------------- */
+
+/* Base aside styling */
+.starlight-aside {
+	border-radius: 6px;
+	border: 1px solid var(--aibtc-border-subtle);
+	border-left-width: 3px;
+}
+
+/* Note — uses blue accent */
+.starlight-aside--note {
+	--sl-color-asides-text-accent: var(--aibtc-blue-high);
+	--sl-color-asides-border: var(--aibtc-blue);
+	background-color: var(--aibtc-blue-low);
+	border-left-color: var(--aibtc-blue);
+}
+
+/* Tip — uses purple accent */
+.starlight-aside--tip {
+	--sl-color-asides-text-accent: var(--aibtc-purple-high);
+	--sl-color-asides-border: var(--aibtc-purple);
+	background-color: var(--aibtc-purple-low);
+	border-left-color: var(--aibtc-purple);
+}
+
+/* Caution — uses orange (brand primary) */
+.starlight-aside--caution {
+	--sl-color-asides-text-accent: var(--aibtc-orange-light);
+	--sl-color-asides-border: var(--aibtc-orange);
+	background-color: rgba(255, 79, 3, 0.08);
+	border-left-color: var(--aibtc-orange);
+}
+
+/* Danger — uses red (keeping Starlight default) */
+.starlight-aside--danger {
+	background-color: rgba(239, 68, 68, 0.08);
+	border-left-color: #ef4444;
+}
+
+/* ----------------------------------------------------------------
+   Tables — brand border treatments
+   ---------------------------------------------------------------- */
+.sl-markdown-content table:not(:where(.not-content *)) {
+	border: 1px solid var(--aibtc-border-subtle);
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+.sl-markdown-content :is(th, td):not(:where(.not-content *)) {
+	border-bottom-color: var(--aibtc-border-subtle);
+}
+
+.sl-markdown-content th:not(:where(.not-content *)) {
+	background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* ----------------------------------------------------------------
+   Cards and containers — subtle gradient accents
+   ---------------------------------------------------------------- */
+
+/* Card link styling (Starlight card components) */
+.sl-link-card {
+	border: 1px solid var(--aibtc-border-default);
+	border-radius: 8px;
+	background: linear-gradient(
+		135deg,
+		rgba(255, 79, 3, 0.03) 0%,
+		transparent 50%,
+		rgba(6, 52, 208, 0.03) 100%
+	);
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sl-link-card:hover {
+	border-color: var(--aibtc-border-accent);
+	box-shadow: 0 0 20px var(--aibtc-orange-glow);
+}
+
+/* Blockquotes */
+.sl-markdown-content blockquote:not(:where(.not-content *)) {
+	border-left-color: var(--aibtc-border-accent-strong);
+	background: linear-gradient(
+		90deg,
+		rgba(255, 79, 3, 0.05) 0%,
+		transparent 100%
+	);
+	padding: 1rem;
+	border-radius: 0 6px 6px 0;
+}
+
+/* Horizontal rules */
+.sl-markdown-content hr:not(:where(.not-content *)) {
+	border: 0;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		var(--aibtc-border-default) 20%,
+		var(--aibtc-border-default) 80%,
+		transparent 100%
+	);
+}
