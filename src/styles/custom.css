@@ -654,31 +654,101 @@ starlight-toc a {
 /* Card link styling (Starlight card components) */
 .sl-link-card {
 	border: 1px solid var(--aibtc-border-default);
-	border-radius: 8px;
+	border-radius: 10px;
 	background: linear-gradient(
-		135deg,
-		rgba(255, 79, 3, 0.03) 0%,
-		transparent 50%,
-		rgba(6, 52, 208, 0.03) 100%
+		145deg,
+		rgba(255, 79, 3, 0.04) 0%,
+		rgba(0, 0, 0, 0.3) 50%,
+		rgba(6, 52, 208, 0.04) 100%
 	);
-	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	transition: all 0.25s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+/* Gradient border on hover using pseudo-element */
+.sl-link-card::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: 10px;
+	padding: 1px;
+	background: linear-gradient(135deg, var(--aibtc-orange) 0%, var(--aibtc-blue) 100%);
+	-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	opacity: 0;
+	transition: opacity 0.25s ease;
+	pointer-events: none;
+}
+
+.sl-link-card:hover::before {
+	opacity: 1;
 }
 
 .sl-link-card:hover {
-	border-color: var(--aibtc-border-accent);
-	box-shadow: 0 0 20px var(--aibtc-orange-glow);
+	border-color: transparent;
+	box-shadow: 0 0 30px var(--aibtc-orange-glow), 0 4px 20px rgba(0, 0, 0, 0.3);
+	transform: translateY(-2px);
+}
+
+/* Card title styling */
+.sl-link-card .sl-link-card__title {
+	font-family: var(--aibtc-font-wide);
+	font-weight: 500;
+	color: var(--sl-color-white);
+	transition: color 0.2s ease;
+}
+
+.sl-link-card:hover .sl-link-card__title {
+	color: var(--sl-color-accent-high);
+}
+
+/* Card description */
+.sl-link-card .sl-link-card__description {
+	color: var(--sl-color-gray-2);
+}
+
+/* Card icon accent */
+.sl-link-card svg {
+	color: var(--sl-color-accent);
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.sl-link-card:hover svg {
+	color: var(--sl-color-accent-high);
+	transform: translateX(3px);
+}
+
+/* Card grid layout improvements */
+.sl-link-card-grid {
+	gap: 1.5rem;
 }
 
 /* Blockquotes */
 .sl-markdown-content blockquote:not(:where(.not-content *)) {
-	border-left-color: var(--aibtc-border-accent-strong);
+	border-left: 4px solid var(--aibtc-border-accent-strong);
 	background: linear-gradient(
 		90deg,
-		rgba(255, 79, 3, 0.05) 0%,
+		rgba(255, 79, 3, 0.06) 0%,
+		rgba(255, 79, 3, 0.02) 50%,
 		transparent 100%
 	);
-	padding: 1rem;
-	border-radius: 0 6px 6px 0;
+	padding: 1rem 1.25rem;
+	border-radius: 0 8px 8px 0;
+	position: relative;
+}
+
+/* Blockquote quotation mark decoration */
+.sl-markdown-content blockquote:not(:where(.not-content *))::before {
+	content: '"';
+	position: absolute;
+	top: -0.25rem;
+	left: 0.5rem;
+	font-size: 3rem;
+	font-family: var(--aibtc-font-extrawide);
+	color: var(--aibtc-orange-glow);
+	line-height: 1;
 }
 
 /* Horizontal rules */
