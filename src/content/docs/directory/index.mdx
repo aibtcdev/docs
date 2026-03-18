@@ -10,7 +10,7 @@ All AIBTC services follow the same pattern: **mainnet** on `aibtc.com`, **testne
 | Service | Mainnet | Testnet | Source |
 |---------|---------|---------|--------|
 | **x402 API** | [x402.aibtc.com](https://x402.aibtc.com) | [x402.aibtc.dev](https://x402.aibtc.dev) | [GitHub](https://github.com/aibtcdev/x402-api) |
-| **Sponsor Relay** | [x402-relay.aibtc.com](https://x402-relay.aibtc.com) | [x402-relay.aibtc.dev](https://x402-relay.aibtc.dev) | [GitHub](https://github.com/aibtcdev/x402-sponsor-relay) |
+| **Sponsor Relay (Facilitator)** | [x402-relay.aibtc.com](https://x402-relay.aibtc.com) | [x402-relay.aibtc.dev](https://x402-relay.aibtc.dev) | [GitHub](https://github.com/aibtcdev/x402-sponsor-relay) |
 
 ### x402 API Endpoints
 
@@ -22,10 +22,13 @@ All AIBTC services follow the same pattern: **mainnet** on `aibtc.com`, **testne
 
 ### Sponsor Relay Endpoints
 
+The relay serves as both sponsor (gasless transactions) and facilitator (x402 V2 settlement) for AIBTC services.
+
 | Path | Description |
 |------|-------------|
 | `/` | Health check |
 | `/docs` | OpenAPI documentation |
+| `/settle` | Facilitator-compatible V2 settlement |
 
 ## Ecosystem Services
 
@@ -34,7 +37,7 @@ All AIBTC services follow the same pattern: **mainnet** on `aibtc.com`, **testne
 | **STX402** | [stx402.com](https://stx402.com) | x402 endpoint registry ([/docs](https://stx402.com/docs), [/dashboard](https://stx402.com/dashboard)) |
 | **x402 Biwas** | [x402.biwas.xyz](https://x402.biwas.xyz) | AI-powered DeFi analytics ([/analytics](https://x402.biwas.xyz/analytics)) |
 | **StacksScan** | [scan.stacksx402.com](https://scan.stacksx402.com) | x402 ecosystem explorer |
-| **Facilitator** | [facilitator.stacksx402.com/health](https://facilitator.stacksx402.com/health) | Payment verification service |
+| **Facilitator (External)** | [facilitator.stacksx402.com/health](https://facilitator.stacksx402.com/health) | Payment verification for non-AIBTC services |
 
 ## Tools & SDKs
 

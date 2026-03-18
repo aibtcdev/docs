@@ -25,14 +25,19 @@ All AIBTC services: **mainnet** on `aibtc.com`, **testnet** on `aibtc.dev`.
 | **Docs** | [/docs](https://x402.aibtc.com/docs) | [/docs](https://x402.aibtc.dev/docs) |
 | **Dashboard** | [/dashboard](https://x402.aibtc.com/dashboard) | [/dashboard](https://x402.aibtc.dev/dashboard) |
 
-### Sponsor Relay
+### Sponsor Relay (Facilitator)
+
+The AIBTC relay serves as both **sponsor** (gasless Stacks transactions) and **facilitator** (x402 settlement) for AIBTC services. The `/settle` endpoint provides facilitator-compatible V2 settlement, replacing the external facilitator for all AIBTC x402 infrastructure.
 
 | Endpoint | Mainnet | Testnet |
 |----------|---------|---------|
 | **Base** | `https://x402-relay.aibtc.com` | `https://x402-relay.aibtc.dev` |
 | **Docs** | [/docs](https://x402-relay.aibtc.com/docs) | [/docs](https://x402-relay.aibtc.dev/docs) |
+| **Settle** | `/settle` | `/settle` |
 
-### Facilitator
+### Facilitator (External)
+
+The external facilitator at `facilitator.stacksx402.com` remains available for non-AIBTC services. AIBTC services (`stx402`, `x402-api`, `landing-page`) now route settlement through the AIBTC relay above.
 
 | Endpoint | URL |
 |----------|-----|
